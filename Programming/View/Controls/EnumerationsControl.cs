@@ -16,13 +16,13 @@ namespace Programming.View.Controls
         public EnumerationsControl()
         {
             InitializeComponent();
-            EnumsListBox.SelectedIndex = 0;
+            EnumerationListBox.SelectedIndex = 0;
         }
 
-        private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnumerationListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValuesListBox.Items.Clear();
-            var item = EnumsListBox.SelectedItem;
+            var item = EnumerationListBox.SelectedItem;
             Array enumValues = null;
             switch (item)
             {

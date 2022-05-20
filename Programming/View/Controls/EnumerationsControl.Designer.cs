@@ -31,10 +31,10 @@ namespace Programming.View.Controls
         {
             this.IntValueLabel = new System.Windows.Forms.Label();
             this.ValuesLabel = new System.Windows.Forms.Label();
-            this.EnumsLabel = new System.Windows.Forms.Label();
+            this.EnumerationLabel = new System.Windows.Forms.Label();
             this.IntValueTextBox = new System.Windows.Forms.TextBox();
             this.ValuesListBox = new System.Windows.Forms.ListBox();
-            this.EnumsListBox = new System.Windows.Forms.ListBox();
+            this.EnumerationListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // IntValueLabel
@@ -55,14 +55,14 @@ namespace Programming.View.Controls
             this.ValuesLabel.TabIndex = 10;
             this.ValuesLabel.Text = "Choose value:";
             // 
-            // EnumsLabel
+            // EnumerationLabel
             // 
-            this.EnumsLabel.AutoSize = true;
-            this.EnumsLabel.Location = new System.Drawing.Point(3, 9);
-            this.EnumsLabel.Name = "EnumsLabel";
-            this.EnumsLabel.Size = new System.Drawing.Size(107, 13);
-            this.EnumsLabel.TabIndex = 9;
-            this.EnumsLabel.Text = "Choose enumeration:";
+            this.EnumerationLabel.AutoSize = true;
+            this.EnumerationLabel.Location = new System.Drawing.Point(3, 9);
+            this.EnumerationLabel.Name = "EnumerationLabel";
+            this.EnumerationLabel.Size = new System.Drawing.Size(107, 13);
+            this.EnumerationLabel.TabIndex = 9;
+            this.EnumerationLabel.Text = "Choose enumeration:";
             // 
             // IntValueTextBox
             // 
@@ -81,22 +81,22 @@ namespace Programming.View.Controls
             this.ValuesListBox.TabIndex = 7;
             this.ValuesListBox.SelectedIndexChanged += new System.EventHandler(this.ValuesListBox_SelectedIndexChanged);
             // 
-            // EnumsListBox
+            // EnumerationListBox
             // 
-            this.EnumsListBox.FormattingEnabled = true;
-            this.EnumsListBox.Items.AddRange(new object[] {
+            this.EnumerationListBox.FormattingEnabled = true;
+            this.EnumerationListBox.Items.AddRange(new object[] {
             "Color",
             "Genre",
             "SmartphoneManufacturers",
             "StudentsFormOfStudy",
             "TimeOfYear",
             "Weekday"});
-            this.EnumsListBox.Location = new System.Drawing.Point(3, 25);
-            this.EnumsListBox.Name = "EnumsListBox";
-            this.EnumsListBox.ScrollAlwaysVisible = true;
-            this.EnumsListBox.Size = new System.Drawing.Size(160, 199);
-            this.EnumsListBox.TabIndex = 6;
-            this.EnumsListBox.SelectedIndexChanged += new System.EventHandler(this.EnumsListBox_SelectedIndexChanged);
+            this.EnumerationListBox.Location = new System.Drawing.Point(3, 25);
+            this.EnumerationListBox.Name = "EnumerationListBox";
+            this.EnumerationListBox.ScrollAlwaysVisible = true;
+            this.EnumerationListBox.Size = new System.Drawing.Size(160, 199);
+            this.EnumerationListBox.TabIndex = 6;
+            this.EnumerationListBox.SelectedIndexChanged += new System.EventHandler(this.EnumerationListBox_SelectedIndexChanged);
             // 
             // EnumerationsControl
             // 
@@ -104,10 +104,10 @@ namespace Programming.View.Controls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.IntValueLabel);
             this.Controls.Add(this.ValuesLabel);
-            this.Controls.Add(this.EnumsLabel);
+            this.Controls.Add(this.EnumerationLabel);
             this.Controls.Add(this.IntValueTextBox);
             this.Controls.Add(this.ValuesListBox);
-            this.Controls.Add(this.EnumsListBox);
+            this.Controls.Add(this.EnumerationListBox);
             this.Name = "EnumerationsControl";
             this.Size = new System.Drawing.Size(429, 244);
             this.ResumeLayout(false);
@@ -119,9 +119,9 @@ namespace Programming.View.Controls
 
         private System.Windows.Forms.Label IntValueLabel;
         private System.Windows.Forms.Label ValuesLabel;
-        private System.Windows.Forms.Label EnumsLabel;
+        private System.Windows.Forms.Label EnumerationLabel;
         private System.Windows.Forms.TextBox IntValueTextBox;
         private System.Windows.Forms.ListBox ValuesListBox;
-        private System.Windows.Forms.ListBox EnumsListBox;
+        private System.Windows.Forms.ListBox EnumerationListBox;
     }
 }
