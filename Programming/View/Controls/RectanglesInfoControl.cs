@@ -12,6 +12,9 @@ using Rectangle = Programming.Model.Classes.Rectangle;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class RectanglesInfoControl : UserControl
     {
         private Rectangle[] _rectangles;

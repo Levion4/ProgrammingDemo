@@ -8,6 +8,9 @@ namespace Programming.Model.Classes
 {
     public class Rectangle
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private static int _allRectanglesCount;
 
         private int _length;
@@ -16,10 +19,22 @@ namespace Programming.Model.Classes
 
         private int _id;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Rectangle"/>.
+        /// </summary>
         public Rectangle()
         {
+            _allRectanglesCount++;
+            _id = _allRectanglesCount;
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Rectangle"/>.
+        /// </summary>
+        /// <param name="length">Длина. Должна быть положительная.</param>
+        /// <param name="width">Ширина. Должна быть положительная.</param>
+        /// <param name="color">Цвет.</param>
+        /// <param name="center">Координаты центра класса <see cref="Point2D"/></param>
         public Rectangle(int length, int width, string color, Point2D center)
         {
             Color = color;

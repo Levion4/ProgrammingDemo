@@ -8,6 +8,13 @@ namespace Programming.Model.Classes
 {
     public static class Validator
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="propertyName"></param>
+        /// <exception cref="ArgumentException">Возникает, 
+        /// когда значение отрицательное или равно нулю.</exception>
         public static void AssertOnPositiveValue(int value, string propertyName)
         {
             if (value <= 0)
