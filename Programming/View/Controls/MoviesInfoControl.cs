@@ -12,12 +12,24 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Предоставляет методы для обработки данных о фильмах.
+    /// </summary>
     public partial class MoviesInfoControl : UserControl
     {
+        /// <summary>
+        /// Массив фильмов.
+        /// </summary>
         private Movie[] _movie;
 
+        /// <summary>
+        /// Текущий фильм.
+        /// </summary>
         private Movie _currentMovie = new Movie();
 
+        /// <summary>
+        /// Массив названий фильмов.
+        /// </summary>
         private string[] _movies = new string[] {"Captain America: The First Avenger",
             "Captain Marvel", "Iron Man", "Iron Man 2", "The Incredible Hulk",
             "Thor", "The Avengers", "Shang-Chi and the Legend of the Ten Rings",
@@ -30,6 +42,9 @@ namespace Programming.View.Controls
             "Spider-Man: No Way Home", "Doctor Strange in the Multiverse of Madness",
             "Thor: Love and Thunder", "Black Panther: Wakanda Forever" };
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="MoviesInfoControl"/>.
+        /// </summary>
         public MoviesInfoControl()
         {
             InitializeComponent();
@@ -37,6 +52,9 @@ namespace Programming.View.Controls
             MoviesListBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Инициализирует фильмы.
+        /// </summary>
         private void InitMovies()
         {
             _movie = new Movie[5];
@@ -54,6 +72,11 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Ищет фильм с максимальным рейтингом.
+        /// </summary>
+        /// <param name="movies">Массив фильмов.</param>
+        /// <returns>Возвращает индекс фильма с максимальным рейтингом.</returns>
         private int FindMovieWithMaxRating(Model.Classes.Movie[] movies)
         {
             var maxIndex = 0;

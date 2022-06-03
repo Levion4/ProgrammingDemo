@@ -13,14 +13,23 @@ using Rectangle = Programming.Model.Classes.Rectangle;
 namespace Programming.View.Controls
 {
     /// <summary>
-    /// 
+    /// Предоставляет методы для обработки данных о прямоугольниках.
     /// </summary>
     public partial class RectanglesInfoControl : UserControl
     {
+        /// <summary>
+        /// Массив прямоугольников.
+        /// </summary>
         private Rectangle[] _rectangles;
 
+        /// <summary>
+        /// Текущий прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle = new Rectangle();
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="RectanglesInfoControl"/>.
+        /// </summary>
         public RectanglesInfoControl()
         {
             InitializeComponent();
@@ -28,6 +37,9 @@ namespace Programming.View.Controls
             RectanglesListBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Инициализирует прямоугольники.
+        /// </summary>
         private void InitRectangles()
         {
             _rectangles = new Rectangle[5];
@@ -38,6 +50,11 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Ищет прямоугольник с максимальной шириной.
+        /// </summary>
+        /// <param name="rectangles">Массив прямоугольников.</param>
+        /// <returns>Возвращает индекс прямоугольника с максимальной шириной.</returns>
         private int FindRectangleWithMaxWidth(Model.Classes.Rectangle[] rectangles)
         {
             var maxIndex = 0;

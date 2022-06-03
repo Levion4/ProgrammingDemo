@@ -12,8 +12,14 @@ using Programming.Model.Classes;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Предоставляет методы для обработки событий.
+    /// </summary>
     public partial class SeasonsHandleControl : UserControl
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="SeasonsHandleControl"/>.
+        /// </summary>
         public SeasonsHandleControl()
         {
             InitializeComponent();

@@ -11,8 +11,14 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Предоставляет методы для работы со списками перечислений.
+    /// </summary>
     public partial class EnumerationsControl : UserControl
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="EnumerationsControl"/>.
+        /// </summary>
         public EnumerationsControl()
         {
             InitializeComponent();
