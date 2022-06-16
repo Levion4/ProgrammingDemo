@@ -39,6 +39,7 @@ namespace ContactsApp.Model
             }
             set
             {
+                Validator.AssertStringContainsOnlyLetters(value, nameof(FullName));
                 _fullName = value;
             }
         }

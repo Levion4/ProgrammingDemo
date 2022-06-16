@@ -50,6 +50,9 @@ namespace ContactsApp.View
             // 
             // ContactsListBox
             // 
+            this.ContactsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ContactsListBox.FormattingEnabled = true;
             this.ContactsListBox.Location = new System.Drawing.Point(12, 12);
             this.ContactsListBox.Name = "ContactsListBox";
@@ -59,6 +62,7 @@ namespace ContactsApp.View
             // 
             // SelectedContactGroupBox
             // 
+            this.SelectedContactGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedContactGroupBox.Controls.Add(this.VKTextBox);
             this.SelectedContactGroupBox.Controls.Add(this.PhoneTextBox);
             this.SelectedContactGroupBox.Controls.Add(this.DateOfBirthDateTimePicker);
@@ -146,7 +150,8 @@ namespace ContactsApp.View
             // 
             // EditContactButton
             // 
-            this.EditContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditContactButton.BackgroundImage")));
+            this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.EditContactButton.BackgroundImage = global::ContactsApp.Properties.Resources.contact_edit_24x24;
             this.EditContactButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.EditContactButton.FlatAppearance.BorderSize = 0;
             this.EditContactButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -161,7 +166,8 @@ namespace ContactsApp.View
             // 
             // RemoveContactButton
             // 
-            this.RemoveContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveContactButton.BackgroundImage")));
+            this.RemoveContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoveContactButton.BackgroundImage = global::ContactsApp.Properties.Resources.contact_remove_24x24;
             this.RemoveContactButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.RemoveContactButton.FlatAppearance.BorderSize = 0;
             this.RemoveContactButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -176,7 +182,8 @@ namespace ContactsApp.View
             // 
             // AddContactButton
             // 
-            this.AddContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddContactButton.BackgroundImage")));
+            this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddContactButton.BackgroundImage = global::ContactsApp.Properties.Resources.contact_add_24x24;
             this.AddContactButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AddContactButton.FlatAppearance.BorderSize = 0;
             this.AddContactButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;

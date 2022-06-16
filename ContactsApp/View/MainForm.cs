@@ -68,12 +68,9 @@ namespace ContactsApp.View
         {
             try
             {
-                var selectedIndex = ContactsListBox.SelectedIndex;
                 _currentContact.FullName = FullNameTextBox.Text;
                 FullNameTextBox.BackColor = AppColors.NormalColor;
                 ToolTip.SetToolTip(FullNameTextBox, "");
-                ContactsListBox.Items[selectedIndex] =
-                    _currentContact.FullName;
             }
             catch (Exception exception)
             {
@@ -151,9 +148,13 @@ namespace ContactsApp.View
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
-            //var selectedIndex = ContactsListBox.SelectedIndex;
-            //ContactsListBox.Items[selectedIndex] =
-            //        _currentContact.FullName;
+            ContactsListBox.Items.Clear();
+            _contacts = _contacts.OrderBy(contact => contact.FullName).ToList();
+            foreach(var contact in _contacts)
+            {
+                ContactsListBox.Items.Add(contact.FullName);
+            }
+            ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
         }
     }
 }

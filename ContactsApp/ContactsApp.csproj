@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Model\AppColors.cs" />
     <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Validator.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
