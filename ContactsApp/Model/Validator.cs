@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
 {
@@ -14,8 +15,36 @@ namespace ContactsApp.Model
             {
                 if (!char.IsLetter(value[i]) && !char.IsWhiteSpace(value[i]))
                 {
-                    throw new ArgumentException($"{propertyName} must contains letters only");
+                    throw new ArgumentException($"{propertyName} must contains letters only.");
                 }
+            }
+        }
+
+        public static void AssertValueInRange(int value, int max, string propertyName)
+        {
+            if (value > max)
+            {
+                throw new ArgumentException(
+                    $"The {propertyName} should be in the range up to {max}, " +
+                    $"but was {value}.");
+            }
+        }
+
+        public static void AssertValueInRange(DateTime value, DateTime max, string propertyName)
+        {
+            if (value > max)
+            {
+                throw new ArgumentException(
+                    $"The {propertyName} should be in the range up to {max}, " +
+                    $"but was {value}.");
+            }
+        }
+
+        public static void IsUrlValid(string value, string propertyName)
+        {
+            if(!Regex.IsMatch(value, @"(http|https)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?"))
+            {
+                throw new ArgumentException($"There must be a url link to {propertyName}.");
             }
         }
     }

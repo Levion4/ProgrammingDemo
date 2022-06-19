@@ -42,10 +42,19 @@ namespace ContactsApp.View
             DateOfBirthDateTimePicker.BackColor = AppColors.NormalColor;
         }
 
+        private void ChangeAccessToChangeElements()
+        {
+            bool value = ContactsListBox.SelectedIndex == -1;
+            FullNameTextBox.ReadOnly = value;
+            VKTextBox.ReadOnly = value;
+            PhoneTextBox.ReadOnly = value;
+            DateOfBirthDateTimePicker.Enabled = !value;
+        }
+
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             var contact = new Contact("Full Name",
-                DateTime.Today, "+70000000000", "vk.com");
+                DateTime.Today, "+70000000000", "https://vk.com/");
             _contacts.Add(contact);
             ContactsListBox.Items.Add(contact.FullName);
             ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
@@ -55,12 +64,18 @@ namespace ContactsApp.View
         {
             try
             {
-                _currentContact = _contacts[ContactsListBox.SelectedIndex];
-                UpdateContactInfo(_currentContact);
+                var selectedIndex = ContactsListBox.SelectedIndex;
+                if (selectedIndex >= 0)
+                {
+                    _currentContact = _contacts[selectedIndex];
+                    UpdateContactInfo(_currentContact);
+                }
+                ChangeAccessToChangeElements();
             }
             catch
             {
                 ClearContactInfo();
+                ChangeAccessToChangeElements();
             }
         }
 
@@ -68,9 +83,12 @@ namespace ContactsApp.View
         {
             try
             {
+                var selectedIndex = ContactsListBox.SelectedIndex;
                 _currentContact.FullName = FullNameTextBox.Text;
                 FullNameTextBox.BackColor = AppColors.NormalColor;
                 ToolTip.SetToolTip(FullNameTextBox, "");
+                ContactsListBox.Items[selectedIndex] =
+                    _currentContact.FullName;
             }
             catch (Exception exception)
             {
@@ -143,18 +161,29 @@ namespace ContactsApp.View
                 {
                     ContactsListBox.SelectedIndex = selectedIndex - 1;
                 }
+                if (ContactsListBox.SelectedIndex == -1)
+                {
+                    ClearContactInfo();
+                }
             }
         }
 
-        private void EditContactButton_Click(object sender, EventArgs e)
+        private void FullNameTextBox_Leave(object sender, EventArgs e)
         {
             ContactsListBox.Items.Clear();
             _contacts = _contacts.OrderBy(contact => contact.FullName).ToList();
-            foreach(var contact in _contacts)
+            foreach (var contact in _contacts)
             {
                 ContactsListBox.Items.Add(contact.FullName);
             }
             ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ChangeAccessToChangeElements();
+            DateOfBirthDateTimePicker.Value = DateTime.Today;
+            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
         }
     }
 }

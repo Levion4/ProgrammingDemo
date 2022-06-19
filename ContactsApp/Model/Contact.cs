@@ -12,6 +12,11 @@ namespace ContactsApp.Model
     public class Contact
     {
         /// <summary>
+        /// Ограничение на количество символов в полном имяни контакта.
+        /// </summary>
+        private readonly int _characterLimit = 150;
+
+        /// <summary>
         /// Полное имя контакта.
         /// </summary>
         private string _fullName;
@@ -40,6 +45,7 @@ namespace ContactsApp.Model
             set
             {
                 Validator.AssertStringContainsOnlyLetters(value, nameof(FullName));
+                Validator.AssertValueInRange(value.Length, _characterLimit, nameof(FullName));
                 _fullName = value;
             }
         }
@@ -52,6 +58,7 @@ namespace ContactsApp.Model
             }
             set
             {
+                Validator.AssertValueInRange(value, DateTime.Today, nameof(FullName));
                 _dateOfBirth = value;
             }
         }
@@ -76,6 +83,7 @@ namespace ContactsApp.Model
             }
             set
             {
+                Validator.IsUrlValid(value, nameof(VK));
                 _vK = value;
             }
         }

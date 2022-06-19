@@ -42,7 +42,6 @@ namespace ContactsApp.View
             this.DateOfBirthLabel = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.EditContactButton = new System.Windows.Forms.Button();
             this.RemoveContactButton = new System.Windows.Forms.Button();
             this.AddContactButton = new System.Windows.Forms.Button();
             this.SelectedContactGroupBox.SuspendLayout();
@@ -80,6 +79,7 @@ namespace ContactsApp.View
             // 
             // VKTextBox
             // 
+            this.VKTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.VKTextBox.Location = new System.Drawing.Point(81, 97);
             this.VKTextBox.Name = "VKTextBox";
             this.VKTextBox.Size = new System.Drawing.Size(200, 20);
@@ -88,6 +88,7 @@ namespace ContactsApp.View
             // 
             // PhoneTextBox
             // 
+            this.PhoneTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.PhoneTextBox.Location = new System.Drawing.Point(81, 71);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(200, 20);
@@ -105,12 +106,14 @@ namespace ContactsApp.View
             // 
             // FullNameTextBox
             // 
+            this.FullNameTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.FullNameTextBox.Location = new System.Drawing.Point(81, 19);
             this.FullNameTextBox.MaxLength = 150;
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(441, 20);
             this.FullNameTextBox.TabIndex = 4;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
+            this.FullNameTextBox.Leave += new System.EventHandler(this.FullNameTextBox_Leave);
             // 
             // VKLabel
             // 
@@ -148,22 +151,6 @@ namespace ContactsApp.View
             this.FullNameLabel.TabIndex = 0;
             this.FullNameLabel.Text = "Full Name:";
             // 
-            // EditContactButton
-            // 
-            this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContactButton.BackgroundImage = global::ContactsApp.Properties.Resources.contact_edit_24x24;
-            this.EditContactButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.EditContactButton.FlatAppearance.BorderSize = 0;
-            this.EditContactButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.EditContactButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditContactButton.Location = new System.Drawing.Point(42, 412);
-            this.EditContactButton.Name = "EditContactButton";
-            this.EditContactButton.Size = new System.Drawing.Size(24, 24);
-            this.EditContactButton.TabIndex = 4;
-            this.EditContactButton.UseVisualStyleBackColor = true;
-            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
-            // 
             // RemoveContactButton
             // 
             this.RemoveContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -173,7 +160,7 @@ namespace ContactsApp.View
             this.RemoveContactButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.RemoveContactButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.RemoveContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveContactButton.Location = new System.Drawing.Point(72, 412);
+            this.RemoveContactButton.Location = new System.Drawing.Point(42, 412);
             this.RemoveContactButton.Name = "RemoveContactButton";
             this.RemoveContactButton.Size = new System.Drawing.Size(24, 24);
             this.RemoveContactButton.TabIndex = 3;
@@ -201,7 +188,6 @@ namespace ContactsApp.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 448);
-            this.Controls.Add(this.EditContactButton);
             this.Controls.Add(this.RemoveContactButton);
             this.Controls.Add(this.AddContactButton);
             this.Controls.Add(this.SelectedContactGroupBox);
@@ -209,6 +195,7 @@ namespace ContactsApp.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.SelectedContactGroupBox.ResumeLayout(false);
             this.SelectedContactGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -230,7 +217,6 @@ namespace ContactsApp.View
         private System.Windows.Forms.Button AddContactButton;
         private System.Windows.Forms.Button RemoveContactButton;
         private System.Windows.Forms.ToolTip ToolTip;
-        private System.Windows.Forms.Button EditContactButton;
     }
 }
 
