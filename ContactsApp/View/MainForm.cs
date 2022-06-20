@@ -201,6 +201,7 @@ namespace ContactsApp.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //ContactSerializer.SaveToFile(_contacts);
             ChangeAccessToChangeElements();
             DateOfBirthDateTimePicker.Value = DateTime.Today;
             DateOfBirthDateTimePicker.MaxDate = DateTime.Today;

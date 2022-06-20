@@ -33,7 +33,7 @@ namespace ContactsApp.Model
         /// Проверяет, существует ли папка, указанная в свойстве Filename.
         /// И, если папка не существует, то создает папку.
         /// </summary>
-        public static void CheckDirectory()
+        public static void CreateDirectory()
         {
             if (!Directory.Exists(Filename))
             {
@@ -51,7 +51,7 @@ namespace ContactsApp.Model
         {
             try
             {
-                CheckDirectory();
+                CreateDirectory();
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter(Filename))
                 using (JsonWriter writer = new JsonTextWriter(sw))
@@ -74,7 +74,7 @@ namespace ContactsApp.Model
             List<Contact> contact = null;
             try
             {
-                CheckDirectory();
+                CreateDirectory();
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamReader sr = new StreamReader(Filename))
                 using (JsonReader reader = new JsonTextReader(sr))
@@ -82,9 +82,9 @@ namespace ContactsApp.Model
                     contact = serializer.Deserialize<List<Contact>>(reader);
                 }
             }
-            catch (Exception exception)
+            catch 
             {
-                throw exception;
+                return new List<Contact>();
             }
 
             return contact;
