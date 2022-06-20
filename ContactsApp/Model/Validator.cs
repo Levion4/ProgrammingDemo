@@ -42,9 +42,18 @@ namespace ContactsApp.Model
 
         public static void IsUrlValid(string value, string propertyName)
         {
-            if(!Regex.IsMatch(value, @"(http|https)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?"))
+            if(!Regex.IsMatch(value, @"(https?:\/\/)?(www\.)?(vk.com\/)(id\d|[a-zA-z][a-zA-Z0-9_.]{2,})"))
             {
                 throw new ArgumentException($"There must be a url link to {propertyName}.");
+            }
+        }
+
+        public static void IsPhoneValid(string value, string propertyName)
+        {
+            if (!Regex.IsMatch(value, @"^(\+)[\d]{11}$"))
+            {
+                throw new ArgumentException(
+                    $"The {propertyName} must start with '+' and contain 11 digits.");
             }
         }
     }

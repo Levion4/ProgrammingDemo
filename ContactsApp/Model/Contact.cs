@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
 {
@@ -71,6 +72,7 @@ namespace ContactsApp.Model
             }
             set
             {
+                Validator.IsPhoneValid(value, nameof(Phone));
                 _phone = value;
             }
         }

@@ -54,7 +54,7 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             var contact = new Contact("Full Name",
-                DateTime.Today, "+70000000000", "https://vk.com/");
+                DateTime.Today, "+70000000000", "http://vk.com/user/");
             _contacts.Add(contact);
             ContactsListBox.Items.Add(contact.FullName);
             ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
