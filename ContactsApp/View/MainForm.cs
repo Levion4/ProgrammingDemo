@@ -13,15 +13,29 @@ namespace ContactsApp.View
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Текущий контакт.
+        /// </summary>
         private Contact _currentContact = new Contact();
 
-        private List<Contact> _contacts = new List<Contact>();
+        /// <summary>
+        /// Список контактов.
+        /// </summary>
+        private List<Contact> _contacts = ContactSerializer.LoadFromFile();
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="MainForm"/>.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обновляет информацию о контактах в текстовых полях.
+        /// </summary>
+        /// <param name="contact">Контакт,
+        /// информация о котором обновляестя.</param>
         private void UpdateContactInfo(Contact contact)
         {
             FullNameTextBox.Text = contact.FullName;
@@ -30,6 +44,9 @@ namespace ContactsApp.View
             VKTextBox.Text = contact.VK;
         }
 
+        /// <summary>
+        /// Очищает текстовые поля.
+        /// </summary>
         private void ClearContactInfo()
         {
             FullNameTextBox.Clear();
@@ -42,6 +59,9 @@ namespace ContactsApp.View
             DateOfBirthDateTimePicker.BackColor = AppColors.NormalColor;
         }
 
+        /// <summary>
+        /// Меняет доступ к редактированию элементов.
+        /// </summary>
         private void ChangeAccessToChangeElements()
         {
             bool value = ContactsListBox.SelectedIndex == -1;
@@ -184,6 +204,15 @@ namespace ContactsApp.View
             ChangeAccessToChangeElements();
             DateOfBirthDateTimePicker.Value = DateTime.Today;
             DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
+            for (var i = 0; i < _contacts.Count; i++)
+            {
+                ContactsListBox.Items.Add(_contacts[i].FullName);
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ContactSerializer.SaveToFile(_contacts);
         }
     }
 }

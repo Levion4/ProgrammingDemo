@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace ContactsApp.Model
 {
@@ -37,6 +38,10 @@ namespace ContactsApp.Model
         /// </summary>
         private string _vK;
 
+        /// <summary>
+        /// Возвращает и задает полное имя контакта.
+        /// Должно состоять только из букв. Длина не более 150 символов.
+        /// </summary>
         public string FullName
         {
             get
@@ -51,6 +56,10 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает дату рождения контакта.
+        /// Не должна быть больше текущего дня.
+        /// </summary>
         public DateTime DateOfBirth
         {
             get
@@ -64,6 +73,10 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает номер телефона контакта.
+        /// Должен начинаться с "+" и содержать 11 цифр.
+        /// </summary>
         public string Phone
         {
             get
@@ -77,6 +90,10 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает url-ссылку на VK контакта.
+        /// Должна быть ссылкой на страницу ползователя VK.
+        /// </summary>
         public string VK
         {
             get
@@ -104,6 +121,7 @@ namespace ContactsApp.Model
         /// <param name="dateOfBirth">Дата рождения.</param>
         /// <param name="phone">Номер телефона.</param>
         /// <param name="vK">Ссылка на страницу VK.</param>
+        [JsonConstructor]
         public Contact(string fullName, DateTime dateOfBirth, string phone, string vK)
         {
             FullName = fullName;
