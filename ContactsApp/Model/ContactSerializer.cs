@@ -59,9 +59,9 @@ namespace ContactsApp.Model
                     serializer.Serialize(writer, contact);
                 }
             }
-            catch (Exception exception)
+            catch
             {
-                throw exception;
+                throw new Exception($"An error occurred while saving data to a file.");
             }
         }
 
