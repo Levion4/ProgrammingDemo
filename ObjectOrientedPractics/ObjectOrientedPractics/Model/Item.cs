@@ -13,12 +13,19 @@ namespace ObjectOrientedPractics.Model
     public class Item
     {
         /// <summary>
-        /// Ограничение на количество символов в названии товара.
+        /// Счетчик всех существующих объектов товаров.
+        /// </summary>
+        private static int _allItemsCount;
+
+        /// <summary>
+        /// Ограничение на количество символов
+        /// в названии товара.
         /// </summary>
         private readonly int _maxLengthName = 200;
 
         /// <summary>
-        /// Ограничение на количество символов в описании товара.
+        /// Ограничение на количество символов
+        /// в описании товара.
         /// </summary>
         private readonly int _maxLengthInfo = 1000;
 
@@ -33,12 +40,8 @@ namespace ObjectOrientedPractics.Model
         private readonly double _maxCost = 100000;
 
         /// <summary>
-        /// Счетчик всех существующих объектов товаров.
-        /// </summary>
-        private static int _allItemsCount;
-
-        /// <summary>
-        /// Уникальный идентификатор для всех объектов данного класса.
+        /// Уникальный идентификатор для всех объектов
+        /// данного класса.
         /// </summary>
         private int _id;
 
@@ -128,7 +131,7 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Item"/>
+        /// Создает экземпляр класса <see cref="Item"/>.
         /// </summary>
         public Item()
         {
@@ -137,7 +140,7 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Item"/>
+        /// Создает экземпляр класса <see cref="Item"/>.
         /// </summary>
         /// <param name="name">Название.
         /// Должно быть не длинее 200 символов.</param>
