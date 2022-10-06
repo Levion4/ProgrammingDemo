@@ -103,8 +103,6 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Customer()
         {
-            _allCustomersCount++;
-            _id = _allCustomersCount;
         }
 
         /// <summary>

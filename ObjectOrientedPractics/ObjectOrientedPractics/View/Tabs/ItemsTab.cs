@@ -12,6 +12,9 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Предоставляет методы для обработки товаров.
+    /// </summary>
     public partial class ItemsTab : UserControl
     {
         /// <summary>
