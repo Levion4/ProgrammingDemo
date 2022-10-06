@@ -135,8 +135,6 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Item()
         {
-            _allItemsCount++;
-            _id = _allItemsCount;
         }
 
         /// <summary>
