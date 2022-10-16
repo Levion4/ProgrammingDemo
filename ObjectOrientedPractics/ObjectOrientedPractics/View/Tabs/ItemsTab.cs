@@ -25,7 +25,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private List<Item> _items = new List<Item>();
+        public List<Item> Items = ItemsSerializer.LoadFromFile();
 
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>.
@@ -81,7 +81,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
                 if (selectedIndex >= 0)
                 {
-                    _currentItem = _items[selectedIndex];
+                    _currentItem = Items[selectedIndex];
                     UpdateItemInfo(_currentItem);
                 }
 
@@ -97,7 +97,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButton_Click(object sender, EventArgs e)
         {
             var item = new Item("Name", "Info", 0);
-            _items.Add(item);
+            Items.Add(item);
             ItemsListBox.Items.Add(item.Name);
             ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
         }
@@ -107,10 +107,10 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedIndex != -1)
             {
                 int selectedIndex = ItemsListBox.SelectedIndex;
-                _items.RemoveAt(selectedIndex);
+                Items.RemoveAt(selectedIndex);
                 ItemsListBox.Items.RemoveAt(selectedIndex);
 
-                if (_items.Count != 0)
+                if (Items.Count != 0)
                 {
                     ItemsListBox.SelectedIndex = selectedIndex - 1;
                 }
@@ -176,9 +176,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private void NameTextBox_Leave(object sender, EventArgs e)
         {
             ItemsListBox.Items.Clear();
-            _items = _items.OrderBy(item => item.Name).ToList();
+            Items = Items.OrderBy(item => item.Name).ToList();
 
-            foreach (var item in _items)
+            foreach (var item in Items)
             {
                 ItemsListBox.Items.Add(item.Name);
             }
@@ -189,6 +189,18 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsTab_Load(object sender, EventArgs e)
         {
             ChangeAccessToChangeElements();
+            for (var i = 0; i < Items.Count; i++)
+            {
+                ItemsListBox.Items.Add(Items[i].Name);
+            }
+        }
+
+        private void RandomizeButton_Click(object sender, EventArgs e)
+        {
+            var item = ItemFactory.RandomItem();
+            Items.Add(item);
+            ItemsListBox.Items.Add(item.Name);
+            ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
         }
     }
 }

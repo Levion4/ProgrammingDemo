@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View;
 
 namespace ObjectOrientedPractics
 {
@@ -15,6 +17,19 @@ namespace ObjectOrientedPractics
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                ItemsSerializer.SaveToFile(ItemsTab.Items);
+                CustomersSerializer.SaveToFile(CustomersTab.Customers);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

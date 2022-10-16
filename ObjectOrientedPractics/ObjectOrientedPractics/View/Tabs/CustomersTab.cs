@@ -25,7 +25,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Customer> _customers = new List<Customer>();
+        public List<Customer> Customers = CustomersSerializer.LoadFromFile();
 
         /// <summary>
         /// Создает экземпляр класса <see cref="CustomersTab"/>
@@ -77,7 +77,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
                 if (selectedIndex >= 0)
                 {
-                    _currentCustomer = _customers[selectedIndex];
+                    _currentCustomer = Customers[selectedIndex];
                     UpdateCustomerInfo(_currentCustomer);
                 }
 
@@ -93,7 +93,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButton_Click(object sender, EventArgs e)
         {
             var customer = new Customer("Full Name", "Address");
-            _customers.Add(customer);
+            Customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
         }
@@ -103,10 +103,10 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CustomersListBox.SelectedIndex != -1)
             {
                 int selectedIndex = CustomersListBox.SelectedIndex;
-                _customers.RemoveAt(selectedIndex);
+                Customers.RemoveAt(selectedIndex);
                 CustomersListBox.Items.RemoveAt(selectedIndex);
 
-                if (_customers.Count != 0)
+                if (Customers.Count != 0)
                 {
                     CustomersListBox.SelectedIndex = selectedIndex - 1;
                 }
@@ -156,9 +156,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private void FullnameTextBox_Leave(object sender, EventArgs e)
         {
             CustomersListBox.Items.Clear();
-            _customers = _customers.OrderBy(customer => customer.Fullname).ToList();
+            Customers = Customers.OrderBy(customer => customer.Fullname).ToList();
 
-            foreach (var customer in _customers)
+            foreach (var customer in Customers)
             {
                 CustomersListBox.Items.Add(customer.Fullname);
             }
@@ -169,6 +169,18 @@ namespace ObjectOrientedPractics.View.Tabs
         private void CustomersTab_Load(object sender, EventArgs e)
         {
             ChangeAccessToChangeElements();
+            for (var i = 0; i < Customers.Count; i++)
+            {
+                CustomersListBox.Items.Add(Customers[i].Fullname);
+            }
+        }
+
+        private void RandomizeButton_Click(object sender, EventArgs e)
+        {
+            var customer = CustomerFactory.RandomCustomer();
+            Customers.Add(customer);
+            CustomersListBox.Items.Add(customer.Fullname);
+            CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
         }
     }
 }

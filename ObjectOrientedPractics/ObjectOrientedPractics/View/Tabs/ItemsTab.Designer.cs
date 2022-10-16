@@ -43,6 +43,7 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.RandomizeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ItemsListBox
@@ -51,7 +52,7 @@
             this.ItemsListBox.ItemHeight = 16;
             this.ItemsListBox.Location = new System.Drawing.Point(3, 31);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(327, 404);
+            this.ItemsListBox.Size = new System.Drawing.Size(315, 404);
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -89,7 +90,7 @@
             // 
             this.SelectedItemLabel.AutoSize = true;
             this.SelectedItemLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SelectedItemLabel.Location = new System.Drawing.Point(336, 12);
+            this.SelectedItemLabel.Location = new System.Drawing.Point(324, 12);
             this.SelectedItemLabel.Name = "SelectedItemLabel";
             this.SelectedItemLabel.Size = new System.Drawing.Size(102, 16);
             this.SelectedItemLabel.TabIndex = 0;
@@ -98,7 +99,7 @@
             // IDLabel
             // 
             this.IDLabel.AutoSize = true;
-            this.IDLabel.Location = new System.Drawing.Point(336, 44);
+            this.IDLabel.Location = new System.Drawing.Point(324, 44);
             this.IDLabel.Name = "IDLabel";
             this.IDLabel.Size = new System.Drawing.Size(23, 16);
             this.IDLabel.TabIndex = 1;
@@ -107,7 +108,7 @@
             // CostLabel
             // 
             this.CostLabel.AutoSize = true;
-            this.CostLabel.Location = new System.Drawing.Point(336, 72);
+            this.CostLabel.Location = new System.Drawing.Point(324, 72);
             this.CostLabel.Name = "CostLabel";
             this.CostLabel.Size = new System.Drawing.Size(37, 16);
             this.CostLabel.TabIndex = 2;
@@ -116,7 +117,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(336, 111);
+            this.NameLabel.Location = new System.Drawing.Point(324, 111);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(47, 16);
             this.NameLabel.TabIndex = 3;
@@ -125,7 +126,7 @@
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(336, 212);
+            this.DescriptionLabel.Location = new System.Drawing.Point(324, 212);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(78, 16);
             this.DescriptionLabel.TabIndex = 4;
@@ -133,7 +134,7 @@
             // 
             // IDTextBox
             // 
-            this.IDTextBox.Location = new System.Drawing.Point(379, 41);
+            this.IDTextBox.Location = new System.Drawing.Point(367, 41);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.ReadOnly = true;
             this.IDTextBox.Size = new System.Drawing.Size(145, 22);
@@ -141,7 +142,7 @@
             // 
             // CostTextBox
             // 
-            this.CostTextBox.Location = new System.Drawing.Point(379, 69);
+            this.CostTextBox.Location = new System.Drawing.Point(367, 69);
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.Size = new System.Drawing.Size(145, 22);
             this.CostTextBox.TabIndex = 6;
@@ -149,7 +150,7 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(336, 130);
+            this.NameTextBox.Location = new System.Drawing.Point(324, 130);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(464, 64);
@@ -159,17 +160,28 @@
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(336, 231);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(324, 231);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(464, 173);
             this.DescriptionTextBox.TabIndex = 8;
             this.DescriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
+            // RandomizeButton
+            // 
+            this.RandomizeButton.Location = new System.Drawing.Point(217, 441);
+            this.RandomizeButton.Name = "RandomizeButton";
+            this.RandomizeButton.Size = new System.Drawing.Size(101, 50);
+            this.RandomizeButton.TabIndex = 9;
+            this.RandomizeButton.Text = "Randomize";
+            this.RandomizeButton.UseVisualStyleBackColor = true;
+            this.RandomizeButton.Click += new System.EventHandler(this.RandomizeButton_Click);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RandomizeButton);
             this.Controls.Add(this.CostTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.IDTextBox);
@@ -184,7 +196,7 @@
             this.Controls.Add(this.ItemsLabel);
             this.Controls.Add(this.AddButton);
             this.Name = "ItemsTab";
-            this.Size = new System.Drawing.Size(803, 494);
+            this.Size = new System.Drawing.Size(791, 494);
             this.Load += new System.EventHandler(this.ItemsTab_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,5 +219,6 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.Button RandomizeButton;
     }
 }
