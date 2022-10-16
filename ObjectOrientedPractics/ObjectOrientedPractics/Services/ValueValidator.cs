@@ -41,7 +41,8 @@ namespace ObjectOrientedPractics.Services
         /// подлежит проверке.</param>
         /// <exception cref="ArgumentException">Возникает, 
         /// когда значение не входит в заданный диапазон.</exception>
-        public static void AssertValueInRange(double value, double min, double max, string propertyName)
+        public static void AssertValueInRange(double value,
+            double min, double max, string propertyName)
         {
             if (value < min || value > max)
             {
