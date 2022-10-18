@@ -36,7 +36,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Обновляет информацию о товарах в текстовых полях.
+        /// Обновляет информацию о товарах в элементах.
         /// </summary>
         /// <param name="item"></param>
         private void UpdateItemInfo(Item item)
@@ -45,10 +45,11 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             DescriptionTextBox.Text = item.Info;
+            CategoryComboBox.Text = item.Category.ToString();
         }
 
         /// <summary>
-        /// Очищает текстовые поля.
+        /// Очищает элементы.
         /// </summary>
         private void ClearItemInfo()
         {
@@ -56,6 +57,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Clear();
             NameTextBox.Clear();
             DescriptionTextBox.Clear();
+            CategoryComboBox.SelectedIndex = -1;
             CostTextBox.BackColor = AppColors.NormalColor;
             NameTextBox.BackColor = AppColors.NormalColor;
             DescriptionTextBox.BackColor = AppColors.NormalColor;
@@ -70,6 +72,8 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.ReadOnly = value;
             CostTextBox.ReadOnly = value;
             DescriptionTextBox.ReadOnly = value;
+            CategoryComboBox.DropDownStyle =
+              ComboBoxStyle.DropDownList;
         }
 
         private void ItemsListBox_SelectedIndexChanged(
@@ -96,7 +100,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var item = new Item("Name", "Info", 0);
+            var item = new Item("Name", "Info", 0, Category.Сables);
             Items.Add(item);
             ItemsListBox.Items.Add(item.Name);
             ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
@@ -193,6 +197,11 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ItemsListBox.Items.Add(Items[i].Name);
             }
+            foreach(var value in Enum.GetValues(typeof(Category)))
+            {
+                CategoryComboBox.Items.Add(value.ToString());
+            }
+            CategoryComboBox.SelectedIndex = -1;
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)
@@ -201,6 +210,12 @@ namespace ObjectOrientedPractics.View.Tabs
             Items.Add(item);
             ItemsListBox.Items.Add(item.Name);
             ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Enum.TryParse(CategoryComboBox.Text, out Category category);
+            _currentItem.Category = category;
         }
     }
 }

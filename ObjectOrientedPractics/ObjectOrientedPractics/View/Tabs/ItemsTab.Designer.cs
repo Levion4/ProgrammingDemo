@@ -44,6 +44,8 @@
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RandomizeButton = new System.Windows.Forms.Button();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // ItemsListBox
@@ -117,7 +119,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(324, 111);
+            this.NameLabel.Location = new System.Drawing.Point(324, 136);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(47, 16);
             this.NameLabel.TabIndex = 3;
@@ -126,7 +128,7 @@
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(324, 212);
+            this.DescriptionLabel.Location = new System.Drawing.Point(324, 237);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(78, 16);
             this.DescriptionLabel.TabIndex = 4;
@@ -134,7 +136,7 @@
             // 
             // IDTextBox
             // 
-            this.IDTextBox.Location = new System.Drawing.Point(367, 41);
+            this.IDTextBox.Location = new System.Drawing.Point(396, 41);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.ReadOnly = true;
             this.IDTextBox.Size = new System.Drawing.Size(145, 22);
@@ -142,7 +144,7 @@
             // 
             // CostTextBox
             // 
-            this.CostTextBox.Location = new System.Drawing.Point(367, 69);
+            this.CostTextBox.Location = new System.Drawing.Point(396, 69);
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.Size = new System.Drawing.Size(145, 22);
             this.CostTextBox.TabIndex = 6;
@@ -150,7 +152,7 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(324, 130);
+            this.NameTextBox.Location = new System.Drawing.Point(324, 155);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(464, 64);
@@ -160,10 +162,10 @@
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(324, 231);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(324, 256);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(464, 173);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(464, 137);
             this.DescriptionTextBox.TabIndex = 8;
             this.DescriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
@@ -177,10 +179,30 @@
             this.RandomizeButton.UseVisualStyleBackColor = true;
             this.RandomizeButton.Click += new System.EventHandler(this.RandomizeButton_Click);
             // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(325, 102);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(65, 16);
+            this.CategoryLabel.TabIndex = 10;
+            this.CategoryLabel.Text = "Category:";
+            // 
+            // CategoryComboBox
+            // 
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(396, 97);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(145, 24);
+            this.CategoryComboBox.TabIndex = 11;
+            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CategoryComboBox);
+            this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.RandomizeButton);
             this.Controls.Add(this.CostTextBox);
             this.Controls.Add(this.NameTextBox);
@@ -220,5 +242,7 @@
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.Button RandomizeButton;
+        private System.Windows.Forms.Label CategoryLabel;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
     }
 }

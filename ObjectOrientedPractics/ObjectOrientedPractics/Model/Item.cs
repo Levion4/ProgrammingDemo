@@ -131,6 +131,11 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задает категорию товара.
+        /// </summary>
+        public Category Category { get; set; }
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="Item"/>.
         /// </summary>
         public Item()
@@ -146,11 +151,14 @@ namespace ObjectOrientedPractics.Model
         /// Должно быть не длинее 1000 символов.</param>
         /// <param name="cost">Стоимость. Должна быть
         /// не меньше 0 и не больше 100000.</param>
-        public Item(string name, string info, double cost)
+        /// <param name="category">Категория.</param>
+        public Item(string name, string info, double cost,
+            Category category)
         {
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
             _allItemsCount++;
             _id = _allItemsCount;
         }

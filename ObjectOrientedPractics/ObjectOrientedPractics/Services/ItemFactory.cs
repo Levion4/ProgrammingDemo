@@ -46,7 +46,9 @@ namespace ObjectOrientedPractics.Services
             var discription = _descriptions[random.Next(0,
                 _descriptions.Length)];
             var cost = random.Next(1, 999);
-            var item = new Item(name, discription, cost);
+            var category = (Category)random.Next(
+                Enum.GetNames(typeof(Category)).Length);
+            var item = new Item(name, discription, cost, category);
             return item;
         }
     }
