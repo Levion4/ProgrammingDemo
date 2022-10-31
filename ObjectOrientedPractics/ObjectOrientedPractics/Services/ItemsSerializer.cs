@@ -26,7 +26,7 @@ namespace ObjectOrientedPractics.Services
         {
             var appDataFolder =
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-                @"\Lunev\ContactApp\userdataItems.json";
+                @"\Lunev\ObjectOrientedPractics\userdataItems.json";
             Filename = appDataFolder;
         }
 

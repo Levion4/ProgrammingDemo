@@ -140,6 +140,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Item()
         {
+            _id = _allItemsCount++;
         }
 
         /// <summary>
@@ -159,8 +160,7 @@ namespace ObjectOrientedPractics.Model
             Info = info;
             Cost = cost;
             Category = category;
-            _allItemsCount++;
-            _id = _allItemsCount;
+            _id = _allItemsCount++;
         }
     }
 }

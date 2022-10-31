@@ -155,7 +155,7 @@
             this.NameTextBox.Location = new System.Drawing.Point(324, 155);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(464, 64);
+            this.NameTextBox.Size = new System.Drawing.Size(544, 64);
             this.NameTextBox.TabIndex = 7;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             this.NameTextBox.Leave += new System.EventHandler(this.NameTextBox_Leave);
@@ -165,7 +165,7 @@
             this.DescriptionTextBox.Location = new System.Drawing.Point(324, 256);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(464, 137);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(544, 137);
             this.DescriptionTextBox.TabIndex = 8;
             this.DescriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
@@ -218,7 +218,7 @@
             this.Controls.Add(this.ItemsLabel);
             this.Controls.Add(this.AddButton);
             this.Name = "ItemsTab";
-            this.Size = new System.Drawing.Size(791, 494);
+            this.Size = new System.Drawing.Size(871, 494);
             this.Load += new System.EventHandler(this.ItemsTab_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

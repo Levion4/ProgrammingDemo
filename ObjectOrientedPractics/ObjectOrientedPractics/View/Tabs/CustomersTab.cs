@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Controls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -38,12 +39,14 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет информацию о покупателях в текстовых полях.
         /// </summary>
-        /// <param name="customer"></param>
+        /// <param name="customer">Покупатель,
+        /// информация о котором обновляется.</param>
         private void UpdateCustomerInfo(Customer customer)
         {
             IDTextBox.Text = customer.Id.ToString();
             FullnameTextBox.Text = customer.Fullname;
-            AddressTextBox.Text = customer.Address;
+            AddressControl.Address = customer.Address;
+            AddressControl.UpdateAddressInfo();
         }
 
         /// <summary>
@@ -53,9 +56,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Clear();
             FullnameTextBox.Clear();
-            AddressTextBox.Clear();
             FullnameTextBox.BackColor = AppColors.NormalColor;
-            AddressTextBox.BackColor = AppColors.NormalColor;
+            AddressControl.ClearAddressInfo();
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             bool value = CustomersListBox.SelectedIndex == -1;
             FullnameTextBox.ReadOnly = value;
-            AddressTextBox.ReadOnly = value;
+            AddressControl.ChangeAccessToChangeElements(value);
         }
 
         private void CustomersListBox_SelectedIndexChanged(
@@ -92,7 +94,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var customer = new Customer("Full Name", "Address");
+            var customer = new Customer("Full Name", 100000, "Country",
+                "City", "Street", "Building", "Apartment");
             Customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
@@ -133,22 +136,6 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ToolTip.SetToolTip(FullnameTextBox, exception.Message);
                 FullnameTextBox.BackColor = AppColors.ErrorColor;
-                return;
-            }
-        }
-
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _currentCustomer.Address = AddressTextBox.Text;
-                AddressTextBox.BackColor = AppColors.NormalColor;
-                ToolTip.SetToolTip(AddressTextBox, "");
-            }
-            catch (Exception exception)
-            {
-                ToolTip.SetToolTip(AddressTextBox, exception.Message);
-                AddressTextBox.BackColor = AppColors.ErrorColor;
                 return;
             }
         }

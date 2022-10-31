@@ -21,14 +21,41 @@ namespace ObjectOrientedPractics.Services
             "Жарыхин Константин Макарович"};
 
         /// <summary>
-        /// Массив адресов доставки для покупателей.
+        /// Страна доставки.
         /// </summary>
-        private static string[] _addresses = new string[] {
-            "Россия, г. Волгодонск, Зеленая ул., д. 3 кв.217",
-            "Россия, г. Реутов, Первомайская ул., д. 9 кв.109",
-            "Россия, г. Самара, Мичурина ул., д. 21 кв.39",
-            "Россия, г. Жуковский, Пролетарская ул., д. 7 кв.220",
-            "Россия, г. Томск, Пионерская ул., д. 5 кв.173"};
+        private static string _country = "Россия";
+
+        /// <summary>
+        /// Массив индексов.
+        /// </summary>
+        private static int[] _indexes = new int[] {
+            410205, 644393, 426751, 394789, 443956};
+
+        /// <summary>
+        /// Массив городов.
+        /// </summary>
+        private static string[] _cities = new string[] {
+            "г. Саратоб", "г. Омск", "г. Ижевск", "г. Воронеж",
+            "г. Самара" };
+
+        /// <summary>
+        /// Массив улиц.
+        /// </summary>
+        private static string[] _streets = new string[] {
+            "ул. Кирова", "ул. Полевая", "ул. Интернациональная",
+            "ул. Строительная", "ул. Горького" };
+
+        /// <summary>
+        /// Массив номеров строений.
+        /// </summary>
+        private static string[] _buildings = new string[] {
+            "49", "13", "13", "5", "8"};
+
+        /// <summary>
+        /// Массив номеров квартир.
+        /// </summary>
+        private static string[] _apartments = new string[] {
+            "22", "67", "81", "9", "81"};
 
         /// <summary>
         /// Создает случайные числа.
@@ -38,12 +65,18 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// Создает случайный объект покупателя.
         /// </summary>
-        /// <returns>Возвращает новый случайный объект продавца.</returns>
+        /// <returns>Возвращает новый случайный объект покупателя.</returns>
         public static Customer RandomCustomer()
         {
             var fullname = _fullnames[random.Next(0, _fullnames.Length)];
-            var adress = _addresses[random.Next(0, _addresses.Length)];
-            var customer = new Customer(fullname, adress);
+            var index = _indexes[random.Next(0, _indexes.Length)];
+            var city = _cities[random.Next(0, _cities.Length)];
+            var street = _streets[random.Next(0, _streets.Length)];
+            var building = _buildings[random.Next(0, _buildings.Length)];
+            var apartment = _apartments[random.Next(0, _apartments.Length)];
+            var country = _country;
+            var customer = new Customer(fullname, index, country, city,
+                street, building, apartment);
             return customer;
         }
     }

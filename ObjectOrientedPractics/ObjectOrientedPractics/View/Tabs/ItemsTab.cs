@@ -38,7 +38,8 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет информацию о товарах в элементах.
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">Товар, 
+        /// информация о котором обновляется.</param>
         private void UpdateItemInfo(Item item)
         {
             IDTextBox.Text = item.Id.ToString();

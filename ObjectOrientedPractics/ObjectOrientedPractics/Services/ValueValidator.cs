@@ -12,6 +12,27 @@ namespace ObjectOrientedPractics.Services
     public static class ValueValidator
     {
         /// <summary>
+        /// Проверяет строку на определенную длину.
+        /// </summary>
+        /// <param name="value">Проверяемая строка.</param>
+        /// <param name="length">Длина,
+        /// на которую проверяется строка.</param>
+        /// <param name="propertyName">Имя свойства или объекта, которое
+        /// подлежит проверке.</param>
+        /// <exception cref="ArgumentException">Возникает, когда
+        /// длина строки не равна определенной длины.</exception>
+        public static void AssertStringOnCertainLength(string value,
+            int length, string propertyName)
+        {
+            if (value.Length != length)
+            {
+                throw new ArgumentException(
+                    $"The {propertyName} should be equal to" +
+                    $" {length}, but was {value}.");
+            }
+        }
+
+        /// <summary>
         /// Проверяет строку на длину.
         /// </summary>
         /// <param name="value">Проверяемая строка.</param>
