@@ -15,6 +15,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Controls
 {
+    /// <summary>
+    /// Предоставляет методы для обработки адресов.
+    /// </summary>
     public partial class AddressControl : UserControl
     {
         /// <summary>
@@ -38,7 +41,7 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="AddressControl"/>
+        /// Создает экземпляр класса <see cref="AddressControl"/>.
         /// </summary>
         public AddressControl()
         {
@@ -48,8 +51,6 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Обновляет информацию о адресе в текстовых полях.
         /// </summary>
-        /// <param name="address">Адрес,
-        /// информация о котором обновлятся.</param>
         public void UpdateAddressInfo()
         {
             PostIndexTextBox.Text = Address.Index.ToString();

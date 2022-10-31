@@ -29,7 +29,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public List<Customer> Customers = CustomersSerializer.LoadFromFile();
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="CustomersTab"/>
+        /// Создает экземпляр класса <see cref="CustomersTab"/>.
         /// </summary>
         public CustomersTab()
         {
