@@ -1,32 +1,32 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using ObjectOrientedPractics.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.Services
 {
     /// <summary>
-    /// Предоставляет методы для сериализации данных о покупателях.
+    /// Предоставляет методы для сериализации данных о магазине.
     /// </summary>
-    public class CustomersSerializer
+    public static class StoreSerializer
     {
         /// <summary>
         /// Возвращает и задает путь к файлу.
         /// </summary>
         public static string Filename { get; set; }
-        
+
         /// <summary>
-        /// Создает экземпляр класса <see cref="CustomersSerializer"/>
+        /// Создает экземпляр класса <see cref="StoreSerializer"/>
         /// </summary>
-        static CustomersSerializer()
+        static StoreSerializer()
         {
             var appDataFolder =
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-                @"\Lunev\ObjectOrientedPractics\userdataCustomers.json";
+                @"\Lunev\ObjectOrientedPractics\userdata.json";
             Filename = appDataFolder;
         }
 
@@ -43,12 +43,12 @@ namespace ObjectOrientedPractics.Services
         }
 
         /// <summary>
-        /// Сохраняет данные о покупателях в файл.
+        /// Сохраняет данные о товарах в файл.
         /// </summary>
-        /// <param name="customer">Список покупателей, которых нужно сохранить.</param>
+        /// <param name="store">Данные о магазине, которые нужно сохранить.</param>
         /// <exception cref="Exception">Возникает, 
         /// если произошла ошибка при сохранении.</exception>
-        public static void SaveToFile(List<Customer> customer)
+        public static void SaveToFile(Store store)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace ObjectOrientedPractics.Services
                 using (StreamWriter sw = new StreamWriter(Filename))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    serializer.Serialize(writer, customer);
+                    serializer.Serialize(writer, store);
                 }
             }
             catch
@@ -69,10 +69,10 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// Загружает данные из файла и передает их в список.
         /// </summary>
-        /// <returns>Возвращает список покупателей.</returns>
-        public static List<Customer> LoadFromFile()
+        /// <returns>Возвращает список товаров.</returns>
+        public static Store LoadFromFile()
         {
-            List<Customer> customer = null;
+            Store item = null;
             try
             {
                 CreateDirectory();
@@ -80,15 +80,15 @@ namespace ObjectOrientedPractics.Services
                 using (StreamReader sr = new StreamReader(Filename))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {
-                    customer = serializer.Deserialize<List<Customer>>(reader);
+                    item = serializer.Deserialize<Store>(reader);
                 }
             }
             catch
             {
-                return new List<Customer>();
+                return new Store();
             }
 
-            return customer;
+            return item;
         }
     }
 }

@@ -51,7 +51,6 @@
             this.FullnameTextBox.Size = new System.Drawing.Size(467, 22);
             this.FullnameTextBox.TabIndex = 19;
             this.FullnameTextBox.TextChanged += new System.EventHandler(this.FullnameTextBox_TextChanged);
-            this.FullnameTextBox.Leave += new System.EventHandler(this.FullnameTextBox_Leave);
             // 
             // IDTextBox
             // 

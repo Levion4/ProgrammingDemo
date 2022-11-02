@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Services
     /// <summary>
     /// Предоставляет методы для создания случайных покупателей.
     /// </summary>
-    public class CustomerFactory
+    public static class CustomerFactory
     {
         /// <summary>
         /// Массив полных имен покупателей.
@@ -58,16 +58,13 @@ namespace ObjectOrientedPractics.Services
             "22", "67", "81", "9", "81"};
 
         /// <summary>
-        /// Создает случайные числа.
-        /// </summary>
-        static Random random = new Random();
-
-        /// <summary>
         /// Создает случайный объект покупателя.
         /// </summary>
         /// <returns>Возвращает новый случайный объект покупателя.</returns>
         public static Customer RandomCustomer()
         {
+            Random random = new Random(); 
+
             var fullname = _fullnames[random.Next(0, _fullnames.Length)];
             var index = _indexes[random.Next(0, _indexes.Length)];
             var city = _cities[random.Next(0, _cities.Length)];
@@ -77,6 +74,7 @@ namespace ObjectOrientedPractics.Services
             var country = _country;
             var customer = new Customer(fullname, index, country, city,
                 street, building, apartment);
+
             return customer;
         }
     }

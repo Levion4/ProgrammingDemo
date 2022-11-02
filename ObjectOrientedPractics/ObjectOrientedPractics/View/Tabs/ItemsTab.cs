@@ -25,7 +25,28 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        public List<Item> Items = ItemsSerializer.LoadFromFile();
+        private List<Item> _items;
+
+        /// <summary>
+        /// Возвращает и задает список товаров.
+        /// </summary>
+        public List<Item> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+                ItemsListBox.Items.Clear();
+
+                for (var i = 0; i < _items.Count; i++)
+                {
+                    ItemsListBox.Items.Add(_items[i].Name);
+                }
+            }
+        }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>.
@@ -86,7 +107,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
                 if (selectedIndex >= 0)
                 {
-                    _currentItem = Items[selectedIndex];
+                    _currentItem = _items[selectedIndex];
                     UpdateItemInfo(_currentItem);
                 }
 
@@ -102,7 +123,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddButton_Click(object sender, EventArgs e)
         {
             var item = new Item("Name", "Info", 0, Category.Сables);
-            Items.Add(item);
+            _items.Add(item);
             ItemsListBox.Items.Add(item.Name);
             ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
         }
@@ -112,10 +133,10 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedIndex != -1)
             {
                 int selectedIndex = ItemsListBox.SelectedIndex;
-                Items.RemoveAt(selectedIndex);
+                _items.RemoveAt(selectedIndex);
                 ItemsListBox.Items.RemoveAt(selectedIndex);
 
-                if (Items.Count != 0)
+                if (_items.Count != 0)
                 {
                     ItemsListBox.SelectedIndex = selectedIndex - 1;
                 }
@@ -178,37 +199,22 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void NameTextBox_Leave(object sender, EventArgs e)
-        {
-            ItemsListBox.Items.Clear();
-            Items = Items.OrderBy(item => item.Name).ToList();
-
-            foreach (var item in Items)
-            {
-                ItemsListBox.Items.Add(item.Name);
-            }
-
-            ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
-        }
-
         private void ItemsTab_Load(object sender, EventArgs e)
         {
             ChangeAccessToChangeElements();
-            for (var i = 0; i < Items.Count; i++)
-            {
-                ItemsListBox.Items.Add(Items[i].Name);
-            }
+
             foreach(var value in Enum.GetValues(typeof(Category)))
             {
                 CategoryComboBox.Items.Add(value.ToString());
             }
+
             CategoryComboBox.SelectedIndex = -1;
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)
         {
             var item = ItemFactory.RandomItem();
-            Items.Add(item);
+            _items.Add(item);
             ItemsListBox.Items.Add(item.Name);
             ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
         }

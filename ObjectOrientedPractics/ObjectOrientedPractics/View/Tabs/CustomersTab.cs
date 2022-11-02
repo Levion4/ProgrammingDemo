@@ -26,7 +26,28 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        public List<Customer> Customers = CustomersSerializer.LoadFromFile();
+        private List<Customer> _customers /*= CustomersSerializer.LoadFromFile()*/;
+
+        /// <summary>
+        /// Возвращает и задает список покупателей.
+        /// </summary>
+        public List <Customer> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+                CustomersListBox.Items.Clear();
+
+                for (var i = 0; i < _customers.Count; i++)
+                {
+                    CustomersListBox.Items.Add(_customers[i].Fullname);
+                }
+            }
+        }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="CustomersTab"/>.
@@ -79,7 +100,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
                 if (selectedIndex >= 0)
                 {
-                    _currentCustomer = Customers[selectedIndex];
+                    _currentCustomer = _customers[selectedIndex];
                     UpdateCustomerInfo(_currentCustomer);
                 }
 
@@ -96,7 +117,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             var customer = new Customer("Full Name", 100000, "Country",
                 "City", "Street", "Building", "Apartment");
-            Customers.Add(customer);
+            _customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
         }
@@ -106,10 +127,10 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CustomersListBox.SelectedIndex != -1)
             {
                 int selectedIndex = CustomersListBox.SelectedIndex;
-                Customers.RemoveAt(selectedIndex);
+                _customers.RemoveAt(selectedIndex);
                 CustomersListBox.Items.RemoveAt(selectedIndex);
 
-                if (Customers.Count != 0)
+                if (_customers.Count != 0)
                 {
                     CustomersListBox.SelectedIndex = selectedIndex - 1;
                 }
@@ -140,32 +161,15 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void FullnameTextBox_Leave(object sender, EventArgs e)
-        {
-            CustomersListBox.Items.Clear();
-            Customers = Customers.OrderBy(customer => customer.Fullname).ToList();
-
-            foreach (var customer in Customers)
-            {
-                CustomersListBox.Items.Add(customer.Fullname);
-            }
-
-            CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
-        }
-
         private void CustomersTab_Load(object sender, EventArgs e)
         {
             ChangeAccessToChangeElements();
-            for (var i = 0; i < Customers.Count; i++)
-            {
-                CustomersListBox.Items.Add(Customers[i].Fullname);
-            }
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)
         {
             var customer = CustomerFactory.RandomCustomer();
-            Customers.Add(customer);
+            _customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
         }

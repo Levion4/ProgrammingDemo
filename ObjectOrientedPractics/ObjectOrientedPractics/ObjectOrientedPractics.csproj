@@ -56,9 +56,8 @@
     <Compile Include="Model\Store.cs" />
     <Compile Include="Services\AppColors.cs" />
     <Compile Include="Services\CustomerFactory.cs" />
-    <Compile Include="Services\CustomersSerializer.cs" />
     <Compile Include="Services\ItemFactory.cs" />
-    <Compile Include="Services\ItemsSerializer.cs" />
+    <Compile Include="Services\StoreSerializer.cs" />
     <Compile Include="Services\ValueValidator.cs" />
     <Compile Include="View\Controls\AddressControl.cs">
       <SubType>UserControl</SubType>

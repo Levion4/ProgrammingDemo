@@ -32,16 +32,13 @@ namespace ObjectOrientedPractics.Services
             "This USB 2.0 cable connects your iPhone."};
 
         /// <summary>
-        /// Создает случайные числа.
-        /// </summary>
-        static Random random = new Random();
-
-        /// <summary>
         /// Создает случайный объект товара.
         /// </summary>
         /// <returns>Возвращает новый случайный объект товара.</returns>
         public static Item RandomItem()
         {
+            Random random = new Random();
+
             var name = _names[random.Next(0, _names.Length)];
             var discription = _descriptions[random.Next(0,
                 _descriptions.Length)];
@@ -49,6 +46,7 @@ namespace ObjectOrientedPractics.Services
             var category = (Category)random.Next(
                 Enum.GetNames(typeof(Category)).Length);
             var item = new Item(name, discription, cost, category);
+
             return item;
         }
     }
