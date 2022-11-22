@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Controls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -25,10 +26,31 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Customer> _customers = new List<Customer>();
+        private List<Customer> _customers /*= CustomersSerializer.LoadFromFile()*/;
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="CustomersTab"/>
+        /// Возвращает и задает список покупателей.
+        /// </summary>
+        public List <Customer> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+                CustomersListBox.Items.Clear();
+
+                for (var i = 0; i < _customers.Count; i++)
+                {
+                    CustomersListBox.Items.Add(_customers[i].Fullname);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="CustomersTab"/>.
         /// </summary>
         public CustomersTab()
         {
@@ -38,12 +60,14 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет информацию о покупателях в текстовых полях.
         /// </summary>
-        /// <param name="customer"></param>
+        /// <param name="customer">Покупатель,
+        /// информация о котором обновляется.</param>
         private void UpdateCustomerInfo(Customer customer)
         {
             IDTextBox.Text = customer.Id.ToString();
             FullnameTextBox.Text = customer.Fullname;
-            AddressTextBox.Text = customer.Address;
+            AddressControl.Address = customer.Address;
+            AddressControl.UpdateAddressInfo();
         }
 
         /// <summary>
@@ -53,9 +77,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Clear();
             FullnameTextBox.Clear();
-            AddressTextBox.Clear();
             FullnameTextBox.BackColor = AppColors.NormalColor;
-            AddressTextBox.BackColor = AppColors.NormalColor;
+            AddressControl.ClearAddressInfo();
         }
 
         /// <summary>
@@ -65,7 +88,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             bool value = CustomersListBox.SelectedIndex == -1;
             FullnameTextBox.ReadOnly = value;
-            AddressTextBox.ReadOnly = value;
+            AddressControl.ChangeAccessToChangeElements(value);
         }
 
         private void CustomersListBox_SelectedIndexChanged(
@@ -92,7 +115,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var customer = new Customer("Full Name", "Address");
+            var customer = new Customer("Full Name", 100000, "Country",
+                "City", "Street", "Building", "Apartment");
             _customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
@@ -137,38 +161,17 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _currentCustomer.Address = AddressTextBox.Text;
-                AddressTextBox.BackColor = AppColors.NormalColor;
-                ToolTip.SetToolTip(AddressTextBox, "");
-            }
-            catch (Exception exception)
-            {
-                ToolTip.SetToolTip(AddressTextBox, exception.Message);
-                AddressTextBox.BackColor = AppColors.ErrorColor;
-                return;
-            }
-        }
-
-        private void FullnameTextBox_Leave(object sender, EventArgs e)
-        {
-            CustomersListBox.Items.Clear();
-            _customers = _customers.OrderBy(customer => customer.Fullname).ToList();
-
-            foreach (var customer in _customers)
-            {
-                CustomersListBox.Items.Add(customer.Fullname);
-            }
-
-            CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
-        }
-
         private void CustomersTab_Load(object sender, EventArgs e)
         {
             ChangeAccessToChangeElements();
+        }
+
+        private void RandomizeButton_Click(object sender, EventArgs e)
+        {
+            var customer = CustomerFactory.RandomCustomer();
+            _customers.Add(customer);
+            CustomersListBox.Items.Add(customer.Fullname);
+            CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
         }
     }
 }

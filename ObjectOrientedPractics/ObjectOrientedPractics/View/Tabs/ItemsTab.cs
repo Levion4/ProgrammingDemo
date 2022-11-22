@@ -25,7 +25,28 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private List<Item> _items = new List<Item>();
+        private List<Item> _items;
+
+        /// <summary>
+        /// Возвращает и задает список товаров.
+        /// </summary>
+        public List<Item> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+                ItemsListBox.Items.Clear();
+
+                for (var i = 0; i < _items.Count; i++)
+                {
+                    ItemsListBox.Items.Add(_items[i].Name);
+                }
+            }
+        }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>.
@@ -36,19 +57,21 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Обновляет информацию о товарах в текстовых полях.
+        /// Обновляет информацию о товарах в элементах.
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">Товар, 
+        /// информация о котором обновляется.</param>
         private void UpdateItemInfo(Item item)
         {
             IDTextBox.Text = item.Id.ToString();
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name;
             DescriptionTextBox.Text = item.Info;
+            CategoryComboBox.Text = item.Category.ToString();
         }
 
         /// <summary>
-        /// Очищает текстовые поля.
+        /// Очищает элементы.
         /// </summary>
         private void ClearItemInfo()
         {
@@ -56,6 +79,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Clear();
             NameTextBox.Clear();
             DescriptionTextBox.Clear();
+            CategoryComboBox.SelectedIndex = -1;
             CostTextBox.BackColor = AppColors.NormalColor;
             NameTextBox.BackColor = AppColors.NormalColor;
             DescriptionTextBox.BackColor = AppColors.NormalColor;
@@ -70,6 +94,8 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.ReadOnly = value;
             CostTextBox.ReadOnly = value;
             DescriptionTextBox.ReadOnly = value;
+            CategoryComboBox.DropDownStyle =
+              ComboBoxStyle.DropDownList;
         }
 
         private void ItemsListBox_SelectedIndexChanged(
@@ -96,7 +122,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var item = new Item("Name", "Info", 0);
+            var item = new Item("Name", "Info", 0, Category.Сables);
             _items.Add(item);
             ItemsListBox.Items.Add(item.Name);
             ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
@@ -173,22 +199,30 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void NameTextBox_Leave(object sender, EventArgs e)
-        {
-            ItemsListBox.Items.Clear();
-            _items = _items.OrderBy(item => item.Name).ToList();
-
-            foreach (var item in _items)
-            {
-                ItemsListBox.Items.Add(item.Name);
-            }
-
-            ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
-        }
-
         private void ItemsTab_Load(object sender, EventArgs e)
         {
             ChangeAccessToChangeElements();
+
+            foreach(var value in Enum.GetValues(typeof(Category)))
+            {
+                CategoryComboBox.Items.Add(value.ToString());
+            }
+
+            CategoryComboBox.SelectedIndex = -1;
+        }
+
+        private void RandomizeButton_Click(object sender, EventArgs e)
+        {
+            var item = ItemFactory.RandomItem();
+            _items.Add(item);
+            ItemsListBox.Items.Add(item.Name);
+            ItemsListBox.SelectedIndex = ItemsListBox.Items.Count - 1;
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Enum.TryParse(CategoryComboBox.Text, out Category category);
+            _currentItem.Category = category;
         }
     }
 }

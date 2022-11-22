@@ -25,12 +25,6 @@ namespace ObjectOrientedPractics.Model
         private readonly int _maxLengthFullname = 200;
 
         /// <summary>
-        /// Ограничение на количество символов в
-        /// адресе доставки для покупателя.
-        /// </summary>
-        private readonly int _maxLengthAddress = 500;
-
-        /// <summary>
         /// Уникальный идентификатор для всех
         /// объектов данного класса.
         /// </summary>
@@ -44,7 +38,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки для покупателя.
         /// </summary>
-        private string _address;
+        private Address _address;
 
         /// <summary>
         /// Возвращает и задает полное имя покупателя.
@@ -66,9 +60,8 @@ namespace ObjectOrientedPractics.Model
         
         /// <summary>
         /// Возвращает и задает адрес доставки для покупателя.
-        /// Длина не более 500 символов.
         /// </summary>
-        public string Address
+        public Address Address
         {
             get
             {
@@ -76,8 +69,6 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {
-                ValueValidator.AssertStringOnLength(value,
-                    _maxLengthAddress, nameof(Address));
                 _address = value;
             }
         }
@@ -103,21 +94,26 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Customer()
         {
+            _id = _allCustomersCount++;
         }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        /// <param name="fullname">Полное имя.
-        /// Должно быть не длинее 200 символов.</param>
-        /// <param name="address">Адрес доставки.
-        /// Должен быть не длинее 500 символов.</param>
-        public Customer(string fullname, string address)
+        /// <param name="fullname">Полное имя.</param>
+        /// <param name="index">Почтовый индекс.</param>
+        /// <param name="country">Страна/регион.</param>
+        /// <param name="city">Город (населенный пункт).</param>
+        /// <param name="street">Улица.</param>
+        /// <param name="building">Номер дома.</param>
+        /// <param name="apartment">Номер квартиры/помещения.</param>
+        public Customer(string fullname, int index, string country,
+            string city, string street, string building, string apartment)
         {
             Fullname = fullname;
-            Address = address;
-            _allCustomersCount++;
-            _id = _allCustomersCount;
+            Address = new Address(index, country, city, street,
+                building, apartment);
+            _id = _allCustomersCount++;
         }
     }
 }
