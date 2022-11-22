@@ -41,6 +41,11 @@ namespace ObjectOrientedPractics.Model
         private Address _address;
 
         /// <summary>
+        /// Корзина покупателя.
+        /// </summary>
+        private Cart _cart;
+
+        /// <summary>
         /// Возвращает и задает полное имя покупателя.
         /// Длина не более 200 символов. 
         /// </summary>
@@ -70,6 +75,21 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 _address = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает корзину покупателя.
+        /// </summary>
+        public Cart Cart
+        {
+            get
+            {
+                return _cart;
+            }
+            set
+            {
+                _cart = value;
             }
         }
 
@@ -113,6 +133,7 @@ namespace ObjectOrientedPractics.Model
             Fullname = fullname;
             Address = new Address(index, country, city, street,
                 building, apartment);
+            Cart = new Cart();
             _id = _allCustomersCount++;
         }
     }
