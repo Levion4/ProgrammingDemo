@@ -46,6 +46,11 @@ namespace ObjectOrientedPractics.Model
         private Cart _cart;
 
         /// <summary>
+        /// Список заказов покупателя.
+        /// </summary>
+        private List<Order> _orders;
+
+        /// <summary>
         /// Возвращает и задает полное имя покупателя.
         /// Длина не более 200 символов. 
         /// </summary>
@@ -110,6 +115,21 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задает список заказов покупателя.
+        /// </summary>
+        public List<Order> Orders
+        {
+            get
+            {
+                return _orders;
+            }
+            set
+            {
+                _orders = value;
+            }
+        }
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         public Customer()
@@ -134,6 +154,7 @@ namespace ObjectOrientedPractics.Model
             Address = new Address(index, country, city, street,
                 building, apartment);
             Cart = new Cart();
+            Orders = new List<Order>();
             _id = _allCustomersCount++;
         }
     }
