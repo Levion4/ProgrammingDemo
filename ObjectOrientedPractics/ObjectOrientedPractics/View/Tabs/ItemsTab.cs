@@ -39,11 +39,15 @@ namespace ObjectOrientedPractics.View.Tabs
             set
             {
                 _items = value;
-                ItemsListBox.Items.Clear();
 
-                for (var i = 0; i < _items.Count; i++)
+                if (_items != null)
                 {
-                    ItemsListBox.Items.Add(_items[i].Name);
+                    ItemsListBox.Items.Clear();
+
+                    for (var i = 0; i < _items.Count; i++)
+                    {
+                        ItemsListBox.Items.Add(_items[i].Name);
+                    }
                 }
             }
         }

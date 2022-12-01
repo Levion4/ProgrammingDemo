@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
     public class Order
     {
+        /// <summary>
+        /// Счетчик всех существующих заказов.
+        /// </summary>
+        private static int _allOrdersCount;
+
         /// <summary>
         /// Уникальный идентификатор для всех объектов
         /// данного класса.
@@ -33,6 +39,11 @@ namespace ObjectOrientedPractics.Model
         /// Общая стоимость заказа.
         /// </summary>
         private double _amount;
+
+        /// <summary>
+        /// Возвращает и задает статус заказа.
+        /// </summary>
+        public OrderStatus OrderStatus { get; set; }
 
         /// <summary>
         /// Возвращает и задает уникальный идентификатор заказа.
@@ -109,6 +120,32 @@ namespace ObjectOrientedPractics.Model
             {
                 _amount = value;
             }
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Order"/>.
+        /// </summary>
+        public Order()
+        { 
+            _id = _allOrdersCount++;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Order"/>.
+        /// </summary>
+        /// <param name="date">Дата создания заказа.</param>
+        /// <param name="address">Адрес доставки.</param>
+        /// <param name="items">Список товаров в заказе.</param>
+        /// <param name="amount">Общая стоимость заказа.</param>
+        public Order(DateTime date, Address address,
+            List<Item> items, double amount)
+        {
+            Date = date;
+            OrderStatus = OrderStatus.New;
+            Address = address;
+            Items = items;
+            Amount = amount;
+            _id = _allOrdersCount++;
         }
     }
 }

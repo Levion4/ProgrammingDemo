@@ -26,7 +26,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Customer> _customers /*= CustomersSerializer.LoadFromFile()*/;
+        private List<Customer> _customers;
 
         /// <summary>
         /// Возвращает и задает список покупателей.
@@ -40,11 +40,15 @@ namespace ObjectOrientedPractics.View.Tabs
             set
             {
                 _customers = value;
-                CustomersListBox.Items.Clear();
 
-                for (var i = 0; i < _customers.Count; i++)
+                if (value != null)
                 {
-                    CustomersListBox.Items.Add(_customers[i].Fullname);
+                    CustomersListBox.Items.Clear();
+
+                    for (var i = 0; i < _customers.Count; i++)
+                    {
+                        CustomersListBox.Items.Add(_customers[i].Fullname);
+                    }
                 }
             }
         }

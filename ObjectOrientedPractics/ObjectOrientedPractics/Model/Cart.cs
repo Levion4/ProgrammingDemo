@@ -60,6 +60,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Cart()
         {
+            Items = new List<Item>();
         }
     }
 }

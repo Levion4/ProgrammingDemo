@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View;
+using ObjectOrientedPractics.View.Tabs;
 
 namespace ObjectOrientedPractics
 {
@@ -30,6 +31,8 @@ namespace ObjectOrientedPractics
             _store = StoreSerializer.LoadFromFile();
             ItemsTab.Items = _store.Items;
             CustomersTab.Customers = _store.Customers;
+            CartsTab.Customers = _store.Customers;
+            CartsTab.Items = _store.Items;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -41,6 +44,17 @@ namespace ObjectOrientedPractics
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void ItemsTabControl_SelectedIndexChanged(
+            object sender, EventArgs e)
+        {
+            if(ItemsTabControl.SelectedIndex == 2)
+            {
+                CartsTab.Customers = _store.Customers;
+                CartsTab.Items = _store.Items;
+                CartsTab.RefreshData();
             }
         }
     }
