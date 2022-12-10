@@ -33,6 +33,7 @@ namespace ObjectOrientedPractics
             CustomersTab.Customers = _store.Customers;
             CartsTab.Customers = _store.Customers;
             CartsTab.Items = _store.Items;
+            OrdersTab.OrderCustomers = _store.Customers;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,11 +51,21 @@ namespace ObjectOrientedPractics
         private void ItemsTabControl_SelectedIndexChanged(
             object sender, EventArgs e)
         {
-            if(ItemsTabControl.SelectedIndex == 2)
+            switch (ItemsTabControl.SelectedIndex)
             {
-                CartsTab.Customers = _store.Customers;
-                CartsTab.Items = _store.Items;
-                CartsTab.RefreshData();
+                case 2:
+                {
+                    CartsTab.Customers = _store.Customers;
+                    CartsTab.Items = _store.Items;
+                    CartsTab.RefreshData();
+                    break;
+                }
+                case 3:
+                {
+                    OrdersTab.OrderCustomers = _store.Customers;
+                    OrdersTab.RefreshData();
+                    break;
+                }
             }
         }
     }

@@ -127,6 +127,7 @@
             this.ClearCartButton.TabIndex = 28;
             this.ClearCartButton.Text = "Clear Cart";
             this.ClearCartButton.UseVisualStyleBackColor = true;
+            this.ClearCartButton.Click += new System.EventHandler(this.ClearCartButton_Click);
             // 
             // AmountLabel
             // 
@@ -156,7 +157,6 @@
             this.CartListBox.Name = "CartListBox";
             this.CartListBox.Size = new System.Drawing.Size(541, 212);
             this.CartListBox.TabIndex = 31;
-            this.CartListBox.SelectedIndexChanged += new System.EventHandler(this.CartListBox_SelectedIndexChanged);
             // 
             // CartsTab
             // 

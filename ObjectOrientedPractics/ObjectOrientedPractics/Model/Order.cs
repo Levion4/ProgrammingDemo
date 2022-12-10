@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Дата создания заказа.
         /// </summary>
-        private DateTime _date;
+        private string _date;
 
         /// <summary>
         /// Адрес доставки.
@@ -41,9 +42,29 @@ namespace ObjectOrientedPractics.Model
         private double _amount;
 
         /// <summary>
+        /// Полное имя покупателя.
+        /// </summary>
+        private string _fullname;
+
+        /// <summary>
         /// Возвращает и задает статус заказа.
         /// </summary>
         public OrderStatus OrderStatus { get; set; }
+
+        /// <summary>
+        /// Возвращает и задает полное имя покупателя.
+        /// </summary>
+        public string Fullname
+        {
+            get
+            {
+                return _fullname;
+            }
+            set
+            {
+                _fullname = value;
+            }
+        }
 
         /// <summary>
         /// Возвращает и задает уникальный идентификатор заказа.
@@ -63,15 +84,14 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Возвращает и задает дату создания заказа.
-        /// Задает только во время инициализации.
         /// </summary>
-        public DateTime Date
+        public string Date
         {
             get
             {
                 return _date;
             }
-            private set
+            set
             {
                 _date = value;
             }
@@ -137,14 +157,15 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">Адрес доставки.</param>
         /// <param name="items">Список товаров в заказе.</param>
         /// <param name="amount">Общая стоимость заказа.</param>
-        public Order(DateTime date, Address address,
-            List<Item> items, double amount)
+        public Order(string date, Address address,
+            List<Item> items, double amount, string fullname)
         {
             Date = date;
             OrderStatus = OrderStatus.New;
             Address = address;
             Items = items;
             Amount = amount;
+            Fullname = fullname;
             _id = _allOrdersCount++;
         }
     }

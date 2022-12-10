@@ -19,7 +19,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Текущий покупатель.
         /// </summary>
-        private Customer _currentCustomer = new Customer();
+        private Customer _currentCustomer;
 
         /// <summary>
         /// Список товаров.
@@ -84,30 +84,40 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="CartsTab"/>
+        /// Создает экземпляр класса <see cref="CartsTab"/>.
         /// </summary>
         public CartsTab()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обновляет информацию в элементах.
+        /// </summary>
         public void RefreshData()
         {
+            CustomerCartComboBox.Text = "";
+            AmountNumberLabel.Text = "0";
             ItemsCartListBox.Items.Clear();
+            CustomerCartComboBox.Items.Clear();
+            CartListBox.Items.Clear();
+
 
             for (var i = 0; i < _items.Count; i++)
             {
                 ItemsCartListBox.Items.Add(_items[i].Name);
             }
 
-            CustomerCartComboBox.Items.Clear();
-
             foreach (var customer in _customers)
             {
                 CustomerCartComboBox.Items.Add(customer.Fullname);
             }
 
-            CustomerCartComboBox.SelectedIndex = 0;
+            if (CustomerCartComboBox.SelectedIndex != -1)
+            {
+                AmountNumberLabel.Text =
+                    Customers[CustomerCartComboBox.SelectedIndex].Cart.Amount.ToString();
+            }
         }
 
         private void CustomerCartComboBox_SelectedIndexChanged(
@@ -140,18 +150,23 @@ namespace ObjectOrientedPractics.View.Tabs
                 items.Add(item);
                 CartListBox.Items.Add(item.Name);
                 CartListBox.SelectedIndex = CartListBox.Items.Count - 1;
+                AmountNumberLabel.Text =
+                    Customers[CustomerCartComboBox.SelectedIndex].Cart.Amount.ToString();
             }
         }
 
         private void RemoveItemButton_Click(object sender, EventArgs e)
         {
-            if (CartListBox.SelectedIndex != -1)
+            if (CustomerCartComboBox.SelectedIndex != -1 && 
+                CartListBox.SelectedIndex != -1)
             {
                 int selectedIndex = CartListBox.SelectedIndex;
                 var items =
                     Customers[CustomerCartComboBox.SelectedIndex].Cart.Items;
                 items.RemoveAt(selectedIndex);
                 CartListBox.Items.RemoveAt(selectedIndex);
+                AmountNumberLabel.Text =
+                    Customers[CustomerCartComboBox.SelectedIndex].Cart.Amount.ToString();
 
                 if (items.Count != 0)
                 {
@@ -160,26 +175,38 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void CartListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AmountNumberLabel.Text =
-                Customers[CustomerCartComboBox.SelectedIndex].Cart.Amount.ToString();
-        }
-
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            _currentCustomer = Customers[CustomerCartComboBox.SelectedIndex];
+            if (CustomerCartComboBox.SelectedIndex != -1 &&
+                CartListBox.Items.Count != 0)
+            {
+                _currentCustomer = Customers[CustomerCartComboBox.SelectedIndex];
 
-            var items = _currentCustomer.Cart.Items;
-            var amount = _currentCustomer.Cart.Amount;
-            var date = DateTime.Now;
-            var address = _currentCustomer.Address;
-            var order = new Order(date, address, items, amount);
-            _currentCustomer.Orders.Add(order);
+                var items = new List<Item>(_currentCustomer.Cart.Items);
 
-            CartListBox.Items.Clear();
-            AmountNumberLabel.Text = "0";
-            _currentCustomer.Cart.Items.Clear();
+                var amount = _currentCustomer.Cart.Amount;
+                var date = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                var address = _currentCustomer.Address;
+                var fullname = _currentCustomer.Fullname;
+                var order = new Order(date, address, items, amount, fullname);
+                _currentCustomer.Orders.Add(order);
+
+                CartListBox.Items.Clear();
+                AmountNumberLabel.Text = "0";
+                _currentCustomer.Cart.Items.Clear();
+            }
+        }
+
+        private void ClearCartButton_Click(object sender, EventArgs e)
+        {
+            if (CustomerCartComboBox.SelectedIndex != -1)
+            {
+                CartListBox.Items.Clear();
+                _currentCustomer = Customers[CustomerCartComboBox.SelectedIndex];
+                _currentCustomer.Cart.Items.Clear();           
+                AmountNumberLabel.Text =
+                    Customers[CustomerCartComboBox.SelectedIndex].Cart.Amount.ToString();
+            }
         }
     }
 }
