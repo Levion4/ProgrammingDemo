@@ -8,6 +8,9 @@ using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Хранит данные о заказе.
+    /// </summary>
     public class Order
     {
         /// <summary>
@@ -157,6 +160,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">Адрес доставки.</param>
         /// <param name="items">Список товаров в заказе.</param>
         /// <param name="amount">Общая стоимость заказа.</param>
+        /// <param name="fullname">Полное имя покупателя.</param>
         public Order(string date, Address address,
             List<Item> items, double amount, string fullname)
         {
