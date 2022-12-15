@@ -72,6 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
             FullnameTextBox.Text = customer.Fullname;
             AddressControl.Address = customer.Address;
             AddressControl.UpdateAddressInfo();
+            IsPriorityCheckBox.Checked = customer.IsPriority;
         }
 
         /// <summary>
@@ -83,6 +84,7 @@ namespace ObjectOrientedPractics.View.Tabs
             FullnameTextBox.Clear();
             FullnameTextBox.BackColor = AppColors.NormalColor;
             AddressControl.ClearAddressInfo();
+            IsPriorityCheckBox.Checked = false;
         }
 
         /// <summary>
@@ -93,6 +95,7 @@ namespace ObjectOrientedPractics.View.Tabs
             bool value = CustomersListBox.SelectedIndex == -1;
             FullnameTextBox.ReadOnly = value;
             AddressControl.ChangeAccessToChangeElements(value);
+            IsPriorityCheckBox.AutoCheck = !value;
         }
 
         private void CustomersListBox_SelectedIndexChanged(
@@ -176,6 +179,11 @@ namespace ObjectOrientedPractics.View.Tabs
             _customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
+        }
+
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentCustomer.IsPriority = IsPriorityCheckBox.Checked;
         }
     }
 }

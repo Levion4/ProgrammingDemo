@@ -53,7 +53,12 @@ namespace ObjectOrientedPractics.Services
             try
             {
                 CreateDirectory();
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
                 JsonSerializer serializer = new JsonSerializer();
+                serializer = JsonSerializer.Create(settings);
                 using (StreamWriter sw = new StreamWriter(Filename))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
@@ -76,7 +81,12 @@ namespace ObjectOrientedPractics.Services
             try
             {
                 CreateDirectory();
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
                 JsonSerializer serializer = new JsonSerializer();
+                serializer = JsonSerializer.Create(settings);
                 using (StreamReader sr = new StreamReader(Filename))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {

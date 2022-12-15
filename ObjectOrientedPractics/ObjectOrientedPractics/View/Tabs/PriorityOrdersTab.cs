@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,19 +24,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private PriorityOrder _order;
 
         /// <summary>
-        /// Массив диапазонов времени доставки.
-        /// </summary>
-        private string[] _timeRanges = new string[]
-        {
-            "9:00 – 11:00",
-            "11:00 – 13:00",
-            "13:00 – 15:00",
-            "15:00 – 17:00",
-            "17:00 – 19:00",
-            "19:00 – 21:00"
-        };
-
-        /// <summary>
         /// Создает экземпляр класса <see cref="PriorityOrdersTab"/>.
         /// </summary>
         public PriorityOrdersTab()
@@ -53,10 +41,8 @@ namespace ObjectOrientedPractics.View.Tabs
             var date = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             Address address = new Address();
             var fullname = "fullname";
-            var desiredDeliveryDate = DateTime.Now.Date;
-            var desiredDeliveryTime = _timeRanges[0];
             _order = new PriorityOrder(date, address, items, amount,
-                fullname, desiredDeliveryDate, desiredDeliveryTime);
+                fullname);
             IDTextBox.Text = _order.Id.ToString();
             CreatedTextBox.Text = _order.Date;
             StatusComboBox.Text = _order.OrderStatus.ToString();
@@ -67,6 +53,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void PriorityOrdersTab_Load(object sender, EventArgs e)
         {
+            CreatingOrder();
+
             AddressControl.ChangeAccessToChangeElements(true);
 
             foreach (var value in Enum.GetValues(typeof(OrderStatus)))
@@ -74,14 +62,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 StatusComboBox.Items.Add(value.ToString());
             }
 
-            foreach (var value in _timeRanges)
+            foreach (var value in _order.TimeRanges)
             {
                 DeliveryTimeComboBox.Items.Add(value);
             }
 
             StatusComboBox.SelectedIndex = -1;
 
-            CreatingOrder();
         }
 
         private void AddItemButton_Click(object sender, EventArgs e)

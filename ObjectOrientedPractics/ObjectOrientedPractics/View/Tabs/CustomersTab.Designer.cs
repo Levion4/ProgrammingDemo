@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
+            ObjectOrientedPractics.Model.Address address3 = new ObjectOrientedPractics.Model.Address();
             this.FullnameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RandomizeButton = new System.Windows.Forms.Button();
             this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
+            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // FullnameTextBox
@@ -140,22 +141,35 @@
             // 
             // AddressControl
             // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = 100000;
-            address1.Street = "";
-            this.AddressControl.Address = address1;
-            this.AddressControl.Location = new System.Drawing.Point(324, 97);
+            address3.Apartment = "";
+            address3.Building = "";
+            address3.City = "";
+            address3.Country = "";
+            address3.Index = 100000;
+            address3.Street = "";
+            this.AddressControl.Address = address3;
+            this.AddressControl.Location = new System.Drawing.Point(324, 132);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(544, 152);
             this.AddressControl.TabIndex = 22;
+            // 
+            // IsPriorityCheckBox
+            // 
+            this.IsPriorityCheckBox.AutoCheck = false;
+            this.IsPriorityCheckBox.AutoSize = true;
+            this.IsPriorityCheckBox.Location = new System.Drawing.Point(401, 97);
+            this.IsPriorityCheckBox.Name = "IsPriorityCheckBox";
+            this.IsPriorityCheckBox.Size = new System.Drawing.Size(83, 20);
+            this.IsPriorityCheckBox.TabIndex = 23;
+            this.IsPriorityCheckBox.Text = "Is Priority";
+            this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
+            this.IsPriorityCheckBox.CheckedChanged += new System.EventHandler(this.IsPriorityCheckBox_CheckedChanged);
             // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.IsPriorityCheckBox);
             this.Controls.Add(this.AddressControl);
             this.Controls.Add(this.RandomizeButton);
             this.Controls.Add(this.FullnameTextBox);
@@ -189,5 +203,6 @@
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.Button RandomizeButton;
         private Controls.AddressControl AddressControl;
+        private System.Windows.Forms.CheckBox IsPriorityCheckBox;
     }
 }

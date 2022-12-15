@@ -52,6 +52,11 @@ namespace ObjectOrientedPractics.Model
         private List<Order> _orders;
 
         /// <summary>
+        /// Возвращает и задает признак приоритетносити покупателя.
+        /// </summary>
+        public bool IsPriority { get; set; } = false;
+
+        /// <summary>
         /// Возвращает и задает полное имя покупателя.
         /// Длина не более 200 символов. 
         /// </summary>

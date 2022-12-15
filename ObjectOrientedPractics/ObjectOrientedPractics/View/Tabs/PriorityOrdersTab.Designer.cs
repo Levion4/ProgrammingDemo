@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
+            ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
             this.AmountOrderNumberLabel = new System.Windows.Forms.Label();
             this.AmountOrderLabel = new System.Windows.Forms.Label();
             this.OrderItemsListBox = new System.Windows.Forms.ListBox();
@@ -52,7 +52,7 @@
             // AmountOrderNumberLabel
             // 
             this.AmountOrderNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountOrderNumberLabel.Location = new System.Drawing.Point(439, 462);
+            this.AmountOrderNumberLabel.Location = new System.Drawing.Point(436, 393);
             this.AmountOrderNumberLabel.Name = "AmountOrderNumberLabel";
             this.AmountOrderNumberLabel.Size = new System.Drawing.Size(111, 29);
             this.AmountOrderNumberLabel.TabIndex = 59;
@@ -63,7 +63,7 @@
             // 
             this.AmountOrderLabel.AutoSize = true;
             this.AmountOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountOrderLabel.Location = new System.Drawing.Point(488, 446);
+            this.AmountOrderLabel.Location = new System.Drawing.Point(485, 377);
             this.AmountOrderLabel.Name = "AmountOrderLabel";
             this.AmountOrderLabel.Size = new System.Drawing.Size(62, 16);
             this.AmountOrderLabel.TabIndex = 58;
@@ -73,7 +73,7 @@
             // 
             this.OrderItemsListBox.FormattingEnabled = true;
             this.OrderItemsListBox.ItemHeight = 16;
-            this.OrderItemsListBox.Location = new System.Drawing.Point(6, 306);
+            this.OrderItemsListBox.Location = new System.Drawing.Point(3, 237);
             this.OrderItemsListBox.Name = "OrderItemsListBox";
             this.OrderItemsListBox.Size = new System.Drawing.Size(544, 132);
             this.OrderItemsListBox.TabIndex = 57;
@@ -82,7 +82,7 @@
             // 
             this.OrderItemsLabel.AutoSize = true;
             this.OrderItemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OrderItemsLabel.Location = new System.Drawing.Point(6, 287);
+            this.OrderItemsLabel.Location = new System.Drawing.Point(3, 218);
             this.OrderItemsLabel.Name = "OrderItemsLabel";
             this.OrderItemsLabel.Size = new System.Drawing.Size(87, 16);
             this.OrderItemsLabel.TabIndex = 56;
@@ -91,14 +91,14 @@
             // StatusComboBox
             // 
             this.StatusComboBox.FormattingEnabled = true;
-            this.StatusComboBox.Location = new System.Drawing.Point(70, 93);
+            this.StatusComboBox.Location = new System.Drawing.Point(652, 130);
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(172, 24);
             this.StatusComboBox.TabIndex = 55;
             // 
             // CreatedTextBox
             // 
-            this.CreatedTextBox.Location = new System.Drawing.Point(70, 65);
+            this.CreatedTextBox.Location = new System.Drawing.Point(652, 102);
             this.CreatedTextBox.Name = "CreatedTextBox";
             this.CreatedTextBox.ReadOnly = true;
             this.CreatedTextBox.Size = new System.Drawing.Size(172, 22);
@@ -106,7 +106,7 @@
             // 
             // IDTextBox
             // 
-            this.IDTextBox.Location = new System.Drawing.Point(70, 37);
+            this.IDTextBox.Location = new System.Drawing.Point(652, 74);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.ReadOnly = true;
             this.IDTextBox.Size = new System.Drawing.Size(172, 22);
@@ -115,7 +115,7 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(6, 96);
+            this.StatusLabel.Location = new System.Drawing.Point(588, 133);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(47, 16);
             this.StatusLabel.TabIndex = 52;
@@ -124,7 +124,7 @@
             // CreatedLabel
             // 
             this.CreatedLabel.AutoSize = true;
-            this.CreatedLabel.Location = new System.Drawing.Point(6, 68);
+            this.CreatedLabel.Location = new System.Drawing.Point(588, 105);
             this.CreatedLabel.Name = "CreatedLabel";
             this.CreatedLabel.Size = new System.Drawing.Size(58, 16);
             this.CreatedLabel.TabIndex = 51;
@@ -133,7 +133,7 @@
             // IDLabel
             // 
             this.IDLabel.AutoSize = true;
-            this.IDLabel.Location = new System.Drawing.Point(6, 40);
+            this.IDLabel.Location = new System.Drawing.Point(588, 77);
             this.IDLabel.Name = "IDLabel";
             this.IDLabel.Size = new System.Drawing.Size(23, 16);
             this.IDLabel.TabIndex = 50;
@@ -143,7 +143,7 @@
             // 
             this.SelectedOrderLabel.AutoSize = true;
             this.SelectedOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SelectedOrderLabel.Location = new System.Drawing.Point(3, 9);
+            this.SelectedOrderLabel.Location = new System.Drawing.Point(585, 46);
             this.SelectedOrderLabel.Name = "SelectedOrderLabel";
             this.SelectedOrderLabel.Size = new System.Drawing.Size(112, 16);
             this.SelectedOrderLabel.TabIndex = 49;
@@ -153,7 +153,7 @@
             // 
             this.PriorityOptionsLabel.AutoSize = true;
             this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PriorityOptionsLabel.Location = new System.Drawing.Point(292, 9);
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(584, 218);
             this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
             this.PriorityOptionsLabel.Size = new System.Drawing.Size(113, 16);
             this.PriorityOptionsLabel.TabIndex = 60;
@@ -162,7 +162,7 @@
             // DeliveryTimeLabel
             // 
             this.DeliveryTimeLabel.AutoSize = true;
-            this.DeliveryTimeLabel.Location = new System.Drawing.Point(292, 40);
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(584, 249);
             this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
             this.DeliveryTimeLabel.Size = new System.Drawing.Size(94, 16);
             this.DeliveryTimeLabel.TabIndex = 61;
@@ -171,14 +171,14 @@
             // DeliveryTimeComboBox
             // 
             this.DeliveryTimeComboBox.FormattingEnabled = true;
-            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(392, 37);
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(684, 246);
             this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
             this.DeliveryTimeComboBox.Size = new System.Drawing.Size(158, 24);
             this.DeliveryTimeComboBox.TabIndex = 62;
             // 
             // ClearOrderButton
             // 
-            this.ClearOrderButton.Location = new System.Drawing.Point(665, 408);
+            this.ClearOrderButton.Location = new System.Drawing.Point(446, 425);
             this.ClearOrderButton.Name = "ClearOrderButton";
             this.ClearOrderButton.Size = new System.Drawing.Size(101, 50);
             this.ClearOrderButton.TabIndex = 64;
@@ -188,7 +188,7 @@
             // 
             // RemoveItemButton
             // 
-            this.RemoveItemButton.Location = new System.Drawing.Point(665, 352);
+            this.RemoveItemButton.Location = new System.Drawing.Point(110, 425);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(101, 50);
             this.RemoveItemButton.TabIndex = 63;
@@ -198,7 +198,7 @@
             // 
             // AddItemButton
             // 
-            this.AddItemButton.Location = new System.Drawing.Point(665, 296);
+            this.AddItemButton.Location = new System.Drawing.Point(3, 425);
             this.AddItemButton.Name = "AddItemButton";
             this.AddItemButton.Size = new System.Drawing.Size(101, 50);
             this.AddItemButton.TabIndex = 65;
@@ -208,14 +208,14 @@
             // 
             // AddressControl
             // 
-            address1.Apartment = "";
-            address1.Building = "";
-            address1.City = "";
-            address1.Country = "";
-            address1.Index = 100000;
-            address1.Street = "";
-            this.AddressControl.Address = address1;
-            this.AddressControl.Location = new System.Drawing.Point(6, 123);
+            address2.Apartment = "";
+            address2.Building = "";
+            address2.City = "";
+            address2.Country = "";
+            address2.Index = 100000;
+            address2.Street = "";
+            this.AddressControl.Address = address2;
+            this.AddressControl.Location = new System.Drawing.Point(3, 30);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(544, 152);
             this.AddressControl.TabIndex = 48;

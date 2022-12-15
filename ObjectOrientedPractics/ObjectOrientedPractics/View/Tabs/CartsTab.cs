@@ -188,8 +188,17 @@ namespace ObjectOrientedPractics.View.Tabs
                 var date = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
                 var address = _currentCustomer.Address;
                 var fullname = _currentCustomer.Fullname;
-                var order = new Order(date, address, items, amount, fullname);
-                _currentCustomer.Orders.Add(order);
+                
+                if (_currentCustomer.IsPriority)
+                {
+                    var order = new PriorityOrder(date, address, items, amount, fullname);
+                    _currentCustomer.Orders.Add(order);
+                }
+                else
+                {
+                    var order = new Order(date, address, items, amount, fullname);
+                    _currentCustomer.Orders.Add(order);
+                }
 
                 CartListBox.Items.Clear();
                 AmountNumberLabel.Text = "0";

@@ -185,7 +185,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="fullname">Полное имя покупателя.</param>
         /// <param name="id">Уникальный идентификатор заказа.</param>
         [JsonConstructor]
-        private Order(string date, Address address,
+        public Order(string date, Address address,
             List<Item> items, double amount, string fullname,
             int id)
         {

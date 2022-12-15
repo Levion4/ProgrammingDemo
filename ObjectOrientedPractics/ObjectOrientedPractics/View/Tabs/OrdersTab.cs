@@ -20,7 +20,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Текущий заказ.
         /// </summary>
-        private Order _currentOrder = new Order();
+        private Order _currentOrder;
+
+        /// <summary>
+        /// Текущий приоритетный заказ.
+        /// </summary>
+        private PriorityOrder _currentPriorityOrder = new PriorityOrder();
 
         /// <summary>
         /// Список заказов.
@@ -51,6 +56,7 @@ namespace ObjectOrientedPractics.View.Tabs
             IDTextBox.Clear();
             CreatedTextBox.Clear();
             StatusComboBox.SelectedIndex = -1;
+            DeliveryTimeComboBox.SelectedIndex = -1;
             AddressControl.ClearAddressInfo();
             OrderItemsListBox.Items.Clear();
             AmountOrderNumberLabel.Text = "0";
@@ -115,6 +121,11 @@ namespace ObjectOrientedPractics.View.Tabs
                 StatusComboBox.Items.Add(value.ToString());
             }
 
+            foreach (var value in _currentPriorityOrder.TimeRanges)
+            {
+                DeliveryTimeComboBox.Items.Add(value);
+            }
+
             StatusComboBox.SelectedIndex = -1;
         }
 
@@ -122,8 +133,20 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             foreach (DataGridViewRow row in OrdersDataGridView.SelectedRows)
             {
-                _currentOrder = _orders[
+                if (_orders[Convert.ToInt32(row.Index)] is PriorityOrder priority)
+                {
+                    _currentOrder = priority;
+                    _currentPriorityOrder = priority;
+                    PriorityOptionsPanel.Visible = true;
+                    DeliveryTimeComboBox.Text = _currentPriorityOrder.DesiredDeliveryTime;
+                }
+                else
+                {
+                    _currentOrder = _orders[
                     Convert.ToInt32(row.Index)];
+                    _currentPriorityOrder = null;
+                    PriorityOptionsPanel.Visible = false;
+                }
 
                 IDTextBox.Text = _currentOrder.Id.ToString();
                 CreatedTextBox.Text = _currentOrder.Date;
@@ -151,6 +174,19 @@ namespace ObjectOrientedPractics.View.Tabs
                 Enum.TryParse(StatusComboBox.Text, out OrderStatus orderStatus);
                 _currentOrder.OrderStatus = orderStatus;
                 row.Cells["OrderStatusColumn"].Value = _currentOrder.OrderStatus;
+            }
+        }
+
+        private void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in OrdersDataGridView.SelectedRows)
+            {
+                if (_orders[Convert.ToInt32(row.Index)] is PriorityOrder priority)
+                {
+                    _currentPriorityOrder = priority;
+                    var orderDeliveryTime = DeliveryTimeComboBox.Text;
+                    _currentPriorityOrder.DesiredDeliveryTime = orderDeliveryTime;
+                }
             }
         }
     }
