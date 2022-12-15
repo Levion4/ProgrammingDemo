@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using Newtonsoft.Json;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,6 +157,19 @@ namespace ObjectOrientedPractics.Model
             Cart = new Cart();
             Orders = new List<Order>();
             _id = _allCustomersCount++;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="fullname">Полное имя.</param>
+        /// <param name="id">Уникальный идентификатор покупателя.</param>
+        [JsonConstructor]
+        private Customer(string fullname, int id)
+        {
+            Fullname = fullname;
+            Id = id;
+            _allCustomersCount = id + 1;
         }
     }
 }

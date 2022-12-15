@@ -35,7 +35,7 @@ namespace ObjectOrientedPractics.Services
         /// Массив городов.
         /// </summary>
         private static string[] _cities = new string[] {
-            "г. Саратоб", "г. Омск", "г. Ижевск", "г. Воронеж",
+            "г. Саратов", "г. Омск", "г. Ижевск", "г. Воронеж",
             "г. Самара" };
 
         /// <summary>

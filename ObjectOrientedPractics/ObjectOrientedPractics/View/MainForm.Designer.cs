@@ -29,75 +29,62 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.ItemsTabControl = new System.Windows.Forms.TabControl();
-            this.ItemsTabPage = new System.Windows.Forms.TabPage();
-            this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
-            this.CustomersTabPage = new System.Windows.Forms.TabPage();
-            this.CustomersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
-            this.CartsTabPage = new System.Windows.Forms.TabPage();
-            this.CartsTab = new ObjectOrientedPractics.View.Tabs.CartsTab();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.PriorityOrdersTab = new ObjectOrientedPractics.View.Tabs.PriorityOrdersTab();
             this.OrdersTabPage = new System.Windows.Forms.TabPage();
             this.OrdersTab = new ObjectOrientedPractics.View.Tabs.OrdersTab();
-            this.ItemsTabControl.SuspendLayout();
-            this.ItemsTabPage.SuspendLayout();
-            this.CustomersTabPage.SuspendLayout();
-            this.CartsTabPage.SuspendLayout();
+            this.CartsTabPage = new System.Windows.Forms.TabPage();
+            this.CartsTab = new ObjectOrientedPractics.View.Tabs.CartsTab();
+            this.CustomersTabPage = new System.Windows.Forms.TabPage();
+            this.CustomersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
+            this.ItemsTabPage = new System.Windows.Forms.TabPage();
+            this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
+            this.ItemsTabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1.SuspendLayout();
             this.OrdersTabPage.SuspendLayout();
+            this.CartsTabPage.SuspendLayout();
+            this.CustomersTabPage.SuspendLayout();
+            this.ItemsTabPage.SuspendLayout();
+            this.ItemsTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ItemsTabControl
+            // tabPage1
             // 
-            this.ItemsTabControl.Controls.Add(this.ItemsTabPage);
-            this.ItemsTabControl.Controls.Add(this.CustomersTabPage);
-            this.ItemsTabControl.Controls.Add(this.CartsTabPage);
-            this.ItemsTabControl.Controls.Add(this.OrdersTabPage);
-            this.ItemsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsTabControl.Location = new System.Drawing.Point(0, 0);
-            this.ItemsTabControl.Name = "ItemsTabControl";
-            this.ItemsTabControl.SelectedIndex = 0;
-            this.ItemsTabControl.Size = new System.Drawing.Size(885, 529);
-            this.ItemsTabControl.TabIndex = 0;
-            this.ItemsTabControl.SelectedIndexChanged += new System.EventHandler(this.ItemsTabControl_SelectedIndexChanged);
+            this.tabPage1.Controls.Add(this.PriorityOrdersTab);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(877, 500);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Test Priority Order";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // ItemsTabPage
+            // PriorityOrdersTab
             // 
-            this.ItemsTabPage.Controls.Add(this.ItemsTab);
-            this.ItemsTabPage.Location = new System.Drawing.Point(4, 25);
-            this.ItemsTabPage.Name = "ItemsTabPage";
-            this.ItemsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ItemsTabPage.Size = new System.Drawing.Size(877, 500);
-            this.ItemsTabPage.TabIndex = 0;
-            this.ItemsTabPage.Text = "Items";
-            this.ItemsTabPage.UseVisualStyleBackColor = true;
+            this.PriorityOrdersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PriorityOrdersTab.Location = new System.Drawing.Point(3, 3);
+            this.PriorityOrdersTab.Name = "PriorityOrdersTab";
+            this.PriorityOrdersTab.Size = new System.Drawing.Size(871, 494);
+            this.PriorityOrdersTab.TabIndex = 0;
             // 
-            // ItemsTab
+            // OrdersTabPage
             // 
-            this.ItemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsTab.Items = null;
-            this.ItemsTab.Location = new System.Drawing.Point(3, 3);
-            this.ItemsTab.Name = "ItemsTab";
-            this.ItemsTab.Size = new System.Drawing.Size(871, 494);
-            this.ItemsTab.TabIndex = 0;
+            this.OrdersTabPage.Controls.Add(this.OrdersTab);
+            this.OrdersTabPage.Location = new System.Drawing.Point(4, 25);
+            this.OrdersTabPage.Name = "OrdersTabPage";
+            this.OrdersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.OrdersTabPage.Size = new System.Drawing.Size(877, 500);
+            this.OrdersTabPage.TabIndex = 3;
+            this.OrdersTabPage.Text = "Orders";
+            this.OrdersTabPage.UseVisualStyleBackColor = true;
             // 
-            // CustomersTabPage
+            // OrdersTab
             // 
-            this.CustomersTabPage.Controls.Add(this.CustomersTab);
-            this.CustomersTabPage.Location = new System.Drawing.Point(4, 25);
-            this.CustomersTabPage.Name = "CustomersTabPage";
-            this.CustomersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CustomersTabPage.Size = new System.Drawing.Size(877, 500);
-            this.CustomersTabPage.TabIndex = 1;
-            this.CustomersTabPage.Text = "Customers";
-            this.CustomersTabPage.UseVisualStyleBackColor = true;
-            // 
-            // CustomersTab
-            // 
-            this.CustomersTab.Customers = null;
-            this.CustomersTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomersTab.Location = new System.Drawing.Point(3, 3);
-            this.CustomersTab.Name = "CustomersTab";
-            this.CustomersTab.Size = new System.Drawing.Size(871, 494);
-            this.CustomersTab.TabIndex = 0;
+            this.OrdersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrdersTab.Location = new System.Drawing.Point(3, 3);
+            this.OrdersTab.Name = "OrdersTab";
+            this.OrdersTab.Size = new System.Drawing.Size(871, 494);
+            this.OrdersTab.TabIndex = 0;
             // 
             // CartsTabPage
             // 
@@ -120,25 +107,60 @@
             this.CartsTab.Size = new System.Drawing.Size(871, 494);
             this.CartsTab.TabIndex = 0;
             // 
-            // OrdersTabPage
+            // CustomersTabPage
             // 
-            this.OrdersTabPage.Controls.Add(this.OrdersTab);
-            this.OrdersTabPage.Location = new System.Drawing.Point(4, 25);
-            this.OrdersTabPage.Name = "OrdersTabPage";
-            this.OrdersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.OrdersTabPage.Size = new System.Drawing.Size(877, 500);
-            this.OrdersTabPage.TabIndex = 3;
-            this.OrdersTabPage.Text = "Orders";
-            this.OrdersTabPage.UseVisualStyleBackColor = true;
+            this.CustomersTabPage.Controls.Add(this.CustomersTab);
+            this.CustomersTabPage.Location = new System.Drawing.Point(4, 25);
+            this.CustomersTabPage.Name = "CustomersTabPage";
+            this.CustomersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.CustomersTabPage.Size = new System.Drawing.Size(877, 500);
+            this.CustomersTabPage.TabIndex = 1;
+            this.CustomersTabPage.Text = "Customers";
+            this.CustomersTabPage.UseVisualStyleBackColor = true;
             // 
-            // OrdersTab
+            // CustomersTab
             // 
-            this.OrdersTab.OrderCustomers = null;
-            this.OrdersTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrdersTab.Location = new System.Drawing.Point(3, 3);
-            this.OrdersTab.Name = "OrdersTab";
-            this.OrdersTab.Size = new System.Drawing.Size(871, 494);
-            this.OrdersTab.TabIndex = 0;
+            this.CustomersTab.Customers = null;
+            this.CustomersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomersTab.Location = new System.Drawing.Point(3, 3);
+            this.CustomersTab.Name = "CustomersTab";
+            this.CustomersTab.Size = new System.Drawing.Size(871, 494);
+            this.CustomersTab.TabIndex = 0;
+            // 
+            // ItemsTabPage
+            // 
+            this.ItemsTabPage.Controls.Add(this.ItemsTab);
+            this.ItemsTabPage.Location = new System.Drawing.Point(4, 25);
+            this.ItemsTabPage.Name = "ItemsTabPage";
+            this.ItemsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ItemsTabPage.Size = new System.Drawing.Size(877, 500);
+            this.ItemsTabPage.TabIndex = 0;
+            this.ItemsTabPage.Text = "Items";
+            this.ItemsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ItemsTab
+            // 
+            this.ItemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemsTab.Items = null;
+            this.ItemsTab.Location = new System.Drawing.Point(3, 3);
+            this.ItemsTab.Name = "ItemsTab";
+            this.ItemsTab.Size = new System.Drawing.Size(871, 494);
+            this.ItemsTab.TabIndex = 0;
+            // 
+            // ItemsTabControl
+            // 
+            this.ItemsTabControl.Controls.Add(this.ItemsTabPage);
+            this.ItemsTabControl.Controls.Add(this.CustomersTabPage);
+            this.ItemsTabControl.Controls.Add(this.CartsTabPage);
+            this.ItemsTabControl.Controls.Add(this.OrdersTabPage);
+            this.ItemsTabControl.Controls.Add(this.tabPage1);
+            this.ItemsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemsTabControl.Location = new System.Drawing.Point(0, 0);
+            this.ItemsTabControl.Name = "ItemsTabControl";
+            this.ItemsTabControl.SelectedIndex = 0;
+            this.ItemsTabControl.Size = new System.Drawing.Size(885, 529);
+            this.ItemsTabControl.TabIndex = 0;
+            this.ItemsTabControl.SelectedIndexChanged += new System.EventHandler(this.ItemsTabControl_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -150,26 +172,29 @@
             this.Name = "MainForm";
             this.Text = "Object Oriented Practics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.ItemsTabControl.ResumeLayout(false);
-            this.ItemsTabPage.ResumeLayout(false);
-            this.CustomersTabPage.ResumeLayout(false);
-            this.CartsTabPage.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.OrdersTabPage.ResumeLayout(false);
+            this.CartsTabPage.ResumeLayout(false);
+            this.CustomersTabPage.ResumeLayout(false);
+            this.ItemsTabPage.ResumeLayout(false);
+            this.ItemsTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl ItemsTabControl;
-        private System.Windows.Forms.TabPage ItemsTabPage;
-        private System.Windows.Forms.TabPage CustomersTabPage;
-        private View.Tabs.ItemsTab ItemsTab;
-        private View.Tabs.CustomersTab CustomersTab;
-        private System.Windows.Forms.TabPage CartsTabPage;
-        private View.Tabs.CartsTab CartsTab;
+        private System.Windows.Forms.TabPage tabPage1;
+        private View.Tabs.PriorityOrdersTab PriorityOrdersTab;
         private System.Windows.Forms.TabPage OrdersTabPage;
         private View.Tabs.OrdersTab OrdersTab;
+        private System.Windows.Forms.TabPage CartsTabPage;
+        private View.Tabs.CartsTab CartsTab;
+        private System.Windows.Forms.TabPage CustomersTabPage;
+        private View.Tabs.CustomersTab CustomersTab;
+        private System.Windows.Forms.TabPage ItemsTabPage;
+        private View.Tabs.ItemsTab ItemsTab;
+        private System.Windows.Forms.TabControl ItemsTabControl;
     }
 }
 

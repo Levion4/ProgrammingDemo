@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using Newtonsoft.Json;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,7 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Возвращает и задает дату создания заказа.
+        /// Задает только во время инициализации.
         /// </summary>
         public string Date
         {
@@ -94,7 +96,7 @@ namespace ObjectOrientedPractics.Model
             {
                 return _date;
             }
-            set
+            private set
             {
                 _date = value;
             }
@@ -171,6 +173,30 @@ namespace ObjectOrientedPractics.Model
             Amount = amount;
             Fullname = fullname;
             _id = _allOrdersCount++;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Order"/>.
+        /// </summary>
+        /// <param name="date">Дата создания заказа.</param>
+        /// <param name="address">Адрес доставки.</param>
+        /// <param name="items">Список товаров в заказе.</param>
+        /// <param name="amount">Общая стоимость заказа.</param>
+        /// <param name="fullname">Полное имя покупателя.</param>
+        /// <param name="id">Уникальный идентификатор заказа.</param>
+        [JsonConstructor]
+        private Order(string date, Address address,
+            List<Item> items, double amount, string fullname,
+            int id)
+        {
+            Date = date;
+            OrderStatus = OrderStatus.New;
+            Address = address;
+            Items = items;
+            Amount = amount;
+            Fullname = fullname;
+            Id = id; 
+            _allOrdersCount = id + 1;
         }
     }
 }
