@@ -26,7 +26,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Customer> _customers /*= CustomersSerializer.LoadFromFile()*/;
+        private List<Customer> _customers;
 
         /// <summary>
         /// Возвращает и задает список покупателей.
@@ -40,11 +40,15 @@ namespace ObjectOrientedPractics.View.Tabs
             set
             {
                 _customers = value;
-                CustomersListBox.Items.Clear();
 
-                for (var i = 0; i < _customers.Count; i++)
+                if (value != null)
                 {
-                    CustomersListBox.Items.Add(_customers[i].Fullname);
+                    CustomersListBox.Items.Clear();
+
+                    for (var i = 0; i < _customers.Count; i++)
+                    {
+                        CustomersListBox.Items.Add(_customers[i].Fullname);
+                    }
                 }
             }
         }
@@ -68,6 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
             FullnameTextBox.Text = customer.Fullname;
             AddressControl.Address = customer.Address;
             AddressControl.UpdateAddressInfo();
+            IsPriorityCheckBox.Checked = customer.IsPriority;
         }
 
         /// <summary>
@@ -79,6 +84,7 @@ namespace ObjectOrientedPractics.View.Tabs
             FullnameTextBox.Clear();
             FullnameTextBox.BackColor = AppColors.NormalColor;
             AddressControl.ClearAddressInfo();
+            IsPriorityCheckBox.Checked = false;
         }
 
         /// <summary>
@@ -89,6 +95,7 @@ namespace ObjectOrientedPractics.View.Tabs
             bool value = CustomersListBox.SelectedIndex == -1;
             FullnameTextBox.ReadOnly = value;
             AddressControl.ChangeAccessToChangeElements(value);
+            IsPriorityCheckBox.AutoCheck = !value;
         }
 
         private void CustomersListBox_SelectedIndexChanged(
@@ -172,6 +179,11 @@ namespace ObjectOrientedPractics.View.Tabs
             _customers.Add(customer);
             CustomersListBox.Items.Add(customer.Fullname);
             CustomersListBox.SelectedIndex = CustomersListBox.Items.Count - 1;
+        }
+
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentCustomer.IsPriority = IsPriorityCheckBox.Checked;
         }
     }
 }

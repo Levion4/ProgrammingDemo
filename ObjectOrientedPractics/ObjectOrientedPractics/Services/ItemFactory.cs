@@ -42,7 +42,7 @@ namespace ObjectOrientedPractics.Services
             var name = _names[random.Next(0, _names.Length)];
             var discription = _descriptions[random.Next(0,
                 _descriptions.Length)];
-            var cost = random.Next(1, 999);
+            var cost = Math.Round((random.NextDouble() * (999 - 1) + 1), 2);
             var category = (Category)random.Next(
                 Enum.GetNames(typeof(Category)).Length);
             var item = new Item(name, discription, cost, category);

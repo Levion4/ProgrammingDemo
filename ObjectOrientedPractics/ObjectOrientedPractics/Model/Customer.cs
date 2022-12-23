@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using Newtonsoft.Json;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,21 @@ namespace ObjectOrientedPractics.Model
         private Address _address;
 
         /// <summary>
+        /// Корзина покупателя.
+        /// </summary>
+        private Cart _cart;
+
+        /// <summary>
+        /// Список заказов покупателя.
+        /// </summary>
+        private List<Order> _orders;
+
+        /// <summary>
+        /// Возвращает и задает признак приоритетносити покупателя.
+        /// </summary>
+        public bool IsPriority { get; set; } = false;
+
+        /// <summary>
         /// Возвращает и задает полное имя покупателя.
         /// Длина не более 200 символов. 
         /// </summary>
@@ -74,6 +90,21 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задает корзину покупателя.
+        /// </summary>
+        public Cart Cart
+        {
+            get
+            {
+                return _cart;
+            }
+            set
+            {
+                _cart = value;
+            }
+        }
+
+        /// <summary>
         /// Возвращает и задает уникальный идентификатор
         /// покупателя. Задает только во время инициализации.
         /// </summary>
@@ -86,6 +117,21 @@ namespace ObjectOrientedPractics.Model
             private set
             {
                 _id = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает список заказов покупателя.
+        /// </summary>
+        public List<Order> Orders
+        {
+            get
+            {
+                return _orders;
+            }
+            set
+            {
+                _orders = value;
             }
         }
 
@@ -113,7 +159,22 @@ namespace ObjectOrientedPractics.Model
             Fullname = fullname;
             Address = new Address(index, country, city, street,
                 building, apartment);
+            Cart = new Cart();
+            Orders = new List<Order>();
             _id = _allCustomersCount++;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="fullname">Полное имя.</param>
+        /// <param name="id">Уникальный идентификатор покупателя.</param>
+        [JsonConstructor]
+        private Customer(string fullname, int id)
+        {
+            Fullname = fullname;
+            Id = id;
+            _allCustomersCount = id + 1;
         }
     }
 }

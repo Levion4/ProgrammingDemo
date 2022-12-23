@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using Newtonsoft.Json;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,6 +162,29 @@ namespace ObjectOrientedPractics.Model
             Cost = cost;
             Category = category;
             _id = _allItemsCount++;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Item"/>.
+        /// </summary>
+        /// <param name="name">Название.
+        /// Должно быть не длинее 200 символов.</param>
+        /// <param name="info">Описание.
+        /// Должно быть не длинее 1000 символов.</param>
+        /// <param name="cost">Стоимость. Должна быть
+        /// не меньше 0 и не больше 100000.</param>
+        /// <param name="category">Категория.</param>
+        /// <param name="id">Уникальный идентификатор товара.</param>
+        [JsonConstructor]
+        private Item(string name, string info, double cost,
+            Category category, int id)
+        {
+            Name = name;
+            Info = info;
+            Cost = cost;
+            Category = category;
+            Id = id;
+            _allItemsCount = id + 1;
         }
     }
 }
