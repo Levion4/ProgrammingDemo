@@ -85,7 +85,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         {
             get
             {
-                return $"Процентная {Category} – {CurrentDiscountPercentage}%";
+                return $"Процентная '{Category}' – {CurrentDiscountPercentage}%";
             }
         }
 

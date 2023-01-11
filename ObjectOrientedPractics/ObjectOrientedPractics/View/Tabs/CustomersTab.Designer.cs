@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            ObjectOrientedPractics.Model.Address address3 = new ObjectOrientedPractics.Model.Address();
+            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
             this.FullnameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
@@ -41,8 +41,12 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RandomizeButton = new System.Windows.Forms.Button();
-            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
+            this.DiscountsLabel = new System.Windows.Forms.Label();
+            this.DiscountsListBox = new System.Windows.Forms.ListBox();
+            this.DiscountRemoveButton = new System.Windows.Forms.Button();
+            this.DiscountAddButton = new System.Windows.Forms.Button();
+            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.SuspendLayout();
             // 
             // FullnameTextBox
@@ -139,20 +143,6 @@
             this.RandomizeButton.UseVisualStyleBackColor = true;
             this.RandomizeButton.Click += new System.EventHandler(this.RandomizeButton_Click);
             // 
-            // AddressControl
-            // 
-            address3.Apartment = "";
-            address3.Building = "";
-            address3.City = "";
-            address3.Country = "";
-            address3.Index = 100000;
-            address3.Street = "";
-            this.AddressControl.Address = address3;
-            this.AddressControl.Location = new System.Drawing.Point(324, 132);
-            this.AddressControl.Name = "AddressControl";
-            this.AddressControl.Size = new System.Drawing.Size(544, 152);
-            this.AddressControl.TabIndex = 22;
-            // 
             // IsPriorityCheckBox
             // 
             this.IsPriorityCheckBox.AutoCheck = false;
@@ -165,10 +155,67 @@
             this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
             this.IsPriorityCheckBox.CheckedChanged += new System.EventHandler(this.IsPriorityCheckBox_CheckedChanged);
             // 
+            // DiscountsLabel
+            // 
+            this.DiscountsLabel.AutoSize = true;
+            this.DiscountsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DiscountsLabel.Location = new System.Drawing.Point(324, 308);
+            this.DiscountsLabel.Name = "DiscountsLabel";
+            this.DiscountsLabel.Size = new System.Drawing.Size(75, 16);
+            this.DiscountsLabel.TabIndex = 24;
+            this.DiscountsLabel.Text = "Discounts";
+            // 
+            // DiscountsListBox
+            // 
+            this.DiscountsListBox.FormattingEnabled = true;
+            this.DiscountsListBox.ItemHeight = 16;
+            this.DiscountsListBox.Location = new System.Drawing.Point(324, 327);
+            this.DiscountsListBox.Name = "DiscountsListBox";
+            this.DiscountsListBox.Size = new System.Drawing.Size(374, 116);
+            this.DiscountsListBox.TabIndex = 25;
+            // 
+            // DiscountRemoveButton
+            // 
+            this.DiscountRemoveButton.Location = new System.Drawing.Point(704, 383);
+            this.DiscountRemoveButton.Name = "DiscountRemoveButton";
+            this.DiscountRemoveButton.Size = new System.Drawing.Size(101, 50);
+            this.DiscountRemoveButton.TabIndex = 26;
+            this.DiscountRemoveButton.Text = "Remove";
+            this.DiscountRemoveButton.UseVisualStyleBackColor = true;
+            this.DiscountRemoveButton.Click += new System.EventHandler(this.DiscountRemoveButton_Click);
+            // 
+            // DiscountAddButton
+            // 
+            this.DiscountAddButton.Location = new System.Drawing.Point(704, 327);
+            this.DiscountAddButton.Name = "DiscountAddButton";
+            this.DiscountAddButton.Size = new System.Drawing.Size(101, 50);
+            this.DiscountAddButton.TabIndex = 27;
+            this.DiscountAddButton.Text = "Add";
+            this.DiscountAddButton.UseVisualStyleBackColor = true;
+            this.DiscountAddButton.Click += new System.EventHandler(this.DiscountAddButton_Click);
+            // 
+            // AddressControl
+            // 
+            address1.Apartment = "";
+            address1.Building = "";
+            address1.City = "";
+            address1.Country = "";
+            address1.Index = 100000;
+            address1.Street = "";
+            this.AddressControl.Address = address1;
+            this.AddressControl.Location = new System.Drawing.Point(324, 132);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(544, 152);
+            this.AddressControl.TabIndex = 22;
+            // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DiscountAddButton);
+            this.Controls.Add(this.DiscountRemoveButton);
+            this.Controls.Add(this.DiscountsListBox);
+            this.Controls.Add(this.DiscountsLabel);
             this.Controls.Add(this.IsPriorityCheckBox);
             this.Controls.Add(this.AddressControl);
             this.Controls.Add(this.RandomizeButton);
@@ -204,5 +251,9 @@
         private System.Windows.Forms.Button RandomizeButton;
         private Controls.AddressControl AddressControl;
         private System.Windows.Forms.CheckBox IsPriorityCheckBox;
+        private System.Windows.Forms.Label DiscountsLabel;
+        private System.Windows.Forms.ListBox DiscountsListBox;
+        private System.Windows.Forms.Button DiscountRemoveButton;
+        private System.Windows.Forms.Button DiscountAddButton;
     }
 }

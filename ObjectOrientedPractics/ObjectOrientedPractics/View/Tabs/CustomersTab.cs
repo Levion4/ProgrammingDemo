@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Discounts;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View.Controls;
 
@@ -76,6 +77,20 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
+        /// Обновляет информацию о скидках в списке.
+        /// </summary>
+        private void UpdateDiscountsListBox()
+        {
+            DiscountsListBox.Items.Clear();
+
+            for (var i = 0; i < _currentCustomer.Discounts.Count; i++)
+            {
+                DiscountsListBox.Items.Add(
+                    _currentCustomer.Discounts[i].Info);
+            }
+        }
+
+        /// <summary>
         /// Очищает текстовые поля.
         /// </summary>
         private void ClearCustomerInfo()
@@ -85,6 +100,7 @@ namespace ObjectOrientedPractics.View.Tabs
             FullnameTextBox.BackColor = AppColors.NormalColor;
             AddressControl.ClearAddressInfo();
             IsPriorityCheckBox.Checked = false;
+            DiscountsListBox.Items.Clear();
         }
 
         /// <summary>
@@ -109,6 +125,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     _currentCustomer = _customers[selectedIndex];
                     UpdateCustomerInfo(_currentCustomer);
+                    UpdateDiscountsListBox();
                 }
 
                 ChangeAccessToChangeElements();
@@ -184,6 +201,50 @@ namespace ObjectOrientedPractics.View.Tabs
         private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             _currentCustomer.IsPriority = IsPriorityCheckBox.Checked;
+        }
+
+        private void DiscountAddButton_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex >= 0)
+            {
+                AddDiscountForm addDiscountForm = new AddDiscountForm();
+
+                if(addDiscountForm.ShowDialog() == DialogResult.OK)
+                {
+                    foreach(var discount in _currentCustomer.Discounts)
+                    {
+                        if(discount is PointsDiscount)
+                        {
+                            continue;
+                        }
+
+                        if (((PercentDiscount)discount).Category == 
+                            addDiscountForm.PercentDiscount.Category)
+                        {
+                            return;
+                        }
+                    }
+
+                    _currentCustomer.Discounts.Add(addDiscountForm.PercentDiscount);
+                    UpdateDiscountsListBox();
+                }
+            }
+        }
+
+        private void DiscountRemoveButton_Click(object sender, EventArgs e)
+        {
+            if(CustomersListBox.SelectedIndex >= 0 &&
+                DiscountsListBox.SelectedIndex >= 1)
+            {
+                int selectedIndex = DiscountsListBox.SelectedIndex;
+                _currentCustomer.Discounts.RemoveAt(selectedIndex);
+                DiscountsListBox.Items.RemoveAt(selectedIndex);
+
+                if (_currentCustomer.Discounts.Count != 0)
+                {
+                    DiscountsListBox.SelectedIndex = selectedIndex - 1;
+                }
+            }
         }
     }
 }
