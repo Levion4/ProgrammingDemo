@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит данные о скидке накопительных баллов.
     /// </summary>
-    public class PointsDiscount
+    public class PointsDiscount : IDiscount
     {
         /// <summary>
         /// Количество накопленных баллов.
@@ -84,7 +84,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Возвращает размер скидки.</returns>
-        public int Calculate(List<Item> items)
+        public double Calculate(List<Item> items)
         {
             int maxPercent = 30;
             int maxPossibleDiscount = 
@@ -107,7 +107,7 @@ namespace ObjectOrientedPractics.Model
         /// <returns>Возвращает размер скидки.</returns>
         public double Apply(List<Item> items)
         {
-            int discount = Calculate(items);
+            int discount = (int)Calculate(items);
             _accumulatedPointsCount -= discount;
 
             return discount;
