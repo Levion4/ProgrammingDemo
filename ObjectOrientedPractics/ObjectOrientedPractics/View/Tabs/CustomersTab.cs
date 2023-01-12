@@ -79,7 +79,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет информацию о скидках в списке.
         /// </summary>
-        private void UpdateDiscountsListBox()
+        public void UpdateDiscountsListBox()
         {
             DiscountsListBox.Items.Clear();
 

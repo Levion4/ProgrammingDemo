@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Model.Enums;
+using Newtonsoft.Json;
 
 namespace ObjectOrientedPractics.Model.Discounts
 {
@@ -96,6 +97,19 @@ namespace ObjectOrientedPractics.Model.Discounts
         public PercentDiscount(Category category)
         {
             Category = category;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="PercentDiscount"/>.
+        /// </summary>
+        /// <param name="category">Категория.</param>
+        [JsonConstructor]
+        public PercentDiscount(Category category,
+            int currentDiscountPercentage, double amountBuysCategory)
+        {
+            Category = category;
+            CurrentDiscountPercentage = currentDiscountPercentage;
+            AmountBuysCategory = amountBuysCategory;
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ObjectOrientedPractics.Model.Discounts
 {
@@ -56,6 +57,15 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// </summary>
         public PointsDiscount()
         {
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="PointsDiscount"/>.
+        /// </summary>
+        [JsonConstructor]
+        public PointsDiscount(int accumulatedPointsCount)
+        {
+            AccumulatedPointsCount = accumulatedPointsCount;
         }
 
         /// <summary>

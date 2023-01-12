@@ -78,6 +78,7 @@ namespace ObjectOrientedPractics.Services
         public static Store LoadFromFile()
         {
             Store item = null;
+
             try
             {
                 CreateDirectory();
