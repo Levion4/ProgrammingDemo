@@ -103,6 +103,10 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// Создает экземпляр класса <see cref="PercentDiscount"/>.
         /// </summary>
         /// <param name="category">Категория.</param>
+        /// <param name="amountBuysCategory">
+        /// Общая сумма покупок товаров категории.</param>
+        /// <param name="currentDiscountPercentage">
+        /// Текущая скидка в процентах.</param>
         [JsonConstructor]
         public PercentDiscount(Category category,
             int currentDiscountPercentage, double amountBuysCategory)
@@ -110,27 +114,6 @@ namespace ObjectOrientedPractics.Model.Discounts
             Category = category;
             CurrentDiscountPercentage = currentDiscountPercentage;
             AmountBuysCategory = amountBuysCategory;
-        }
-
-        /// <summary>
-        /// Вычисляет процент от суммы товаров.
-        /// </summary>
-        /// <param name="items">Список товаров.</param>
-        /// <param name="percent">Процент.</param>
-        /// <returns>Возвращает процент от суммы товаров.</returns>
-        public double CalculatePercentAmount(List<Item> items, int percent)
-        {
-            double amountItems = 0;
-
-            foreach (Item item in items)
-            {
-                amountItems += item.Cost;
-            }
-
-            double percentAmount =
-                (amountItems / 100) * percent;
-
-            return percentAmount;
         }
 
         /// <summary>

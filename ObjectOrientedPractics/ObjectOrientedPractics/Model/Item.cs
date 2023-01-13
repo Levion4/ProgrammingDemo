@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Model.Enums;
+using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -14,6 +15,12 @@ namespace ObjectOrientedPractics.Model
     /// </summary>
     public class Item
     {
+        public event EventHandler<EventArgs> NameChanged;
+
+        public event EventHandler<EventArgs> CostChanged;
+
+        public event EventHandler<EventArgs> InfoChanged;
+
         /// <summary>
         /// Счетчик всех существующих объектов товаров.
         /// </summary>
@@ -76,7 +83,12 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value,
                     _maxLengthName, nameof(Name));
-                _name = value;
+
+                if(_name != value)
+                {
+                    _name = value;
+                    NameChanged?.Invoke(this, EventArgs.Empty);
+                }    
             }
         }
 
@@ -94,7 +106,12 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value,
                     _maxLengthInfo, nameof(Info));
-                _info = value;
+
+                if (_info != value)
+                {
+                    _info = value;
+                    InfoChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -112,7 +129,12 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertValueInRange(value,
                     _minCost, _maxCost, nameof(Cost));
-                _cost = value;
+
+                if (_cost != value)
+                {
+                    _cost = value;
+                    CostChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
