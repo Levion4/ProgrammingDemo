@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Model.Orders;
+using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -136,6 +139,11 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задает список скидок.
+        /// </summary>
+        public List<IDiscount> Discounts { get; set; }
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         public Customer()
@@ -159,9 +167,12 @@ namespace ObjectOrientedPractics.Model
             Fullname = fullname;
             Address = new Address(index, country, city, street,
                 building, apartment);
+            Address.AddressChanged += Address_AddressChanged;
             Cart = new Cart();
             Orders = new List<Order>();
             _id = _allCustomersCount++;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new PointsDiscount());
         }
 
         /// <summary>
@@ -175,6 +186,11 @@ namespace ObjectOrientedPractics.Model
             Fullname = fullname;
             Id = id;
             _allCustomersCount = id + 1;
+        }
+
+        private void Address_AddressChanged(object sender, EventArgs args)
+        {
+            MessageBox.Show("Адрес изменился");
         }
     }
 }

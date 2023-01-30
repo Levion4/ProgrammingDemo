@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -60,6 +62,7 @@ namespace ObjectOrientedPractics.View.Tabs
             AddressControl.ClearAddressInfo();
             OrderItemsListBox.Items.Clear();
             AmountOrderNumberLabel.Text = "0";
+            TotalNumberLabel.Text = "0";
         }
 
         /// <summary>
@@ -103,6 +106,8 @@ namespace ObjectOrientedPractics.View.Tabs
                         "AmountColumn"].Value = _orders[i].Amount;
                     currentRow.Cells[
                         "AddressColumn"].Value = address;
+                    currentRow.Cells[
+                        "TotalColumn"].Value = _orders[i].Total;
                 }
             }
             else
@@ -162,6 +167,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
 
                 AmountOrderNumberLabel.Text = _currentOrder.Amount.ToString();
+                TotalNumberLabel.Text = _currentOrder.Total.ToString();
             }
         }
 

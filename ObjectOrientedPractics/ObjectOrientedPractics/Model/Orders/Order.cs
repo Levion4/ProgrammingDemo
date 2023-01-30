@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Хранит данные о заказе.
@@ -144,6 +145,22 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 _amount = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает размер примененной скидки к заказу.
+        /// </summary>
+        public double DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Возвращает сумму всех товаров с применением скидок.
+        /// </summary>
+        public double Total 
+        {
+            get 
+            {
+                return Amount - DiscountAmount;
             }
         }
 

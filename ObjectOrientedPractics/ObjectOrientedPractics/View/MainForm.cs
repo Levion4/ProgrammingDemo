@@ -34,6 +34,18 @@ namespace ObjectOrientedPractics
             CartsTab.Customers = _store.Customers;
             CartsTab.Items = _store.Items;
             OrdersTab.OrderCustomers = _store.Customers;
+
+            DiscountsTab.Items = _store.Items;
+            ItemsTab.ItemsChanged += ItemsTab_ItemsChanged;
+        }
+
+        public void ItemsTab_ItemsChanged(object sender, EventArgs args)
+        {
+            CartsTab.Customers = _store.Customers;
+            CartsTab.Items = _store.Items;
+            CartsTab.RefreshData();
+            OrdersTab.OrderCustomers = _store.Customers;
+            OrdersTab.RefreshData();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,22 +63,22 @@ namespace ObjectOrientedPractics
         private void ItemsTabControl_SelectedIndexChanged(
             object sender, EventArgs e)
         {
-            switch (ItemsTabControl.SelectedIndex)
-            {
-                case 2:
-                {
-                    CartsTab.Customers = _store.Customers;
-                    CartsTab.Items = _store.Items;
-                    CartsTab.RefreshData();
-                    break;
-                }
-                case 3:
-                {
-                    OrdersTab.OrderCustomers = _store.Customers;
-                    OrdersTab.RefreshData();
-                    break;
-                }
-            }
+            //switch (ItemsTabControl.SelectedIndex)
+            //{
+            //    case 2:
+            //        {
+            //            CartsTab.Customers = _store.Customers;
+            //            CartsTab.Items = _store.Items;
+            //            CartsTab.RefreshData();
+            //            break;
+            //        }
+            //    case 3:
+            //        {
+            //            OrdersTab.OrderCustomers = _store.Customers;
+            //            OrdersTab.RefreshData();
+            //            break;
+            //        }
+            //}
         }
     }
 }
