@@ -17,6 +17,7 @@ namespace ObjectOrientedPractics.Model.Enums
         Сables,
         Laptops,
         Smartphones,
-        Nintendo
+        Nintendo,
+        Covers
     }
 }
